@@ -1,0 +1,1608 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="color-scheme" content="dark" />
+  <title>坂口拓海 | Portfolio</title>
+  <meta name="description" content="坂口拓海（さかぐちたくみ）| Hardware / Embedded / Robotics Portfolio" />
+
+  <style>
+    :root{
+      --bg0:#05060a;
+      --bg1:#070a12;
+      --glass: rgba(255,255,255,.08);
+      --glass2: rgba(255,255,255,.12);
+      --stroke: rgba(255,255,255,.14);
+      --stroke2: rgba(255,255,255,.22);
+      --txt: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.68);
+      --muted2: rgba(255,255,255,.52);
+
+      --a:#7c3aed;
+      --b:#22d3ee;
+      --c:#34d399;
+      --d:#fb7185;
+      --e:#fbbf24;
+      --shadow: 0 20px 80px rgba(0,0,0,.55);
+
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+
+      --max: 1120px;
+      --pad: clamp(16px, 3vw, 32px);
+
+      --h1: clamp(38px, 6vw, 72px);
+      --h2: clamp(22px, 3vw, 34px);
+      --h3: clamp(18px, 2.2vw, 24px);
+      --p:  clamp(14px, 1.2vw, 16px);
+
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      color:var(--txt);
+      font-family:var(--sans);
+      background:
+        radial-gradient(1200px 800px at 20% 10%, rgba(124,58,237,.22), transparent 60%),
+        radial-gradient(1100px 850px at 90% 30%, rgba(34,211,238,.18), transparent 58%),
+        radial-gradient(900px 700px at 60% 95%, rgba(52,211,153,.12), transparent 55%),
+        linear-gradient(180deg, var(--bg0), var(--bg1) 70%, #04050a);
+      overflow-x:hidden;
+    }
+
+    .grain{
+      position:fixed; inset:-20%;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
+      mix-blend-mode:overlay;
+      opacity:.20;
+      pointer-events:none;
+      transform:translateZ(0);
+      animation: grainMove 10s steps(8) infinite;
+      z-index:1;
+    }
+    @keyframes grainMove{
+      0%{transform:translate(-2%, -2%)}
+      25%{transform:translate(2%, -1%)}
+      50%{transform:translate(1%, 2%)}
+      75%{transform:translate(-1%, 1%)}
+      100%{transform:translate(-2%, -2%)}
+    }
+
+    #fx{
+      position:fixed; inset:0;
+      z-index:0;
+      pointer-events:none;
+      opacity:.9;
+    }
+
+    .cursor{
+      position:fixed;
+      width:24px; height:24px;
+      border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), rgba(255,255,255,0) 55%);
+      filter: blur(1px);
+      mix-blend-mode:screen;
+      pointer-events:none;
+      z-index:9999;
+      transform:translate(-50%,-50%);
+      opacity:.8;
+    }
+    .cursor2{
+      position:fixed;
+      width:280px; height:280px;
+      border-radius:50%;
+      background: radial-gradient(circle, rgba(124,58,237,.22), rgba(34,211,238,.14), rgba(0,0,0,0) 60%);
+      filter: blur(18px);
+      mix-blend-mode:screen;
+      pointer-events:none;
+      z-index:9998;
+      transform:translate(-50%,-50%);
+      opacity:.85;
+    }
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg, rgba(10,12,20,.75), rgba(10,12,20,.35));
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:12px var(--pad);
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      text-decoration:none; color:var(--txt);
+      user-select:none;
+    }
+    .logo{
+      width:34px; height:34px;
+      border-radius:12px;
+      background:
+        radial-gradient(12px 12px at 25% 25%, rgba(255,255,255,.85), rgba(255,255,255,0) 70%),
+        linear-gradient(135deg, rgba(124,58,237,.95), rgba(34,211,238,.85));
+      box-shadow: 0 10px 40px rgba(124,58,237,.25);
+      position:relative;
+      overflow:hidden;
+    }
+    .logo::after{
+      content:"";
+      position:absolute; inset:-40%;
+      background: conic-gradient(from 180deg, rgba(255,255,255,0), rgba(255,255,255,.28), rgba(255,255,255,0));
+      animation: spin 4.8s linear infinite;
+      opacity:.85;
+    }
+    @keyframes spin{ to{ transform:rotate(360deg)} }
+
+    .brandText{
+      display:flex; flex-direction:column; line-height:1.1;
+    }
+    .brandText b{ font-size:14px; letter-spacing:.04em }
+    .brandText span{ font-size:12px; color:var(--muted2) }
+
+    nav a{
+      color:var(--muted);
+      text-decoration:none;
+      font-size:13px;
+      padding:10px 10px;
+      border-radius:12px;
+      transition: all .25s ease;
+      position:relative;
+    }
+    nav a:hover{
+      color:var(--txt);
+      background: rgba(255,255,255,.06);
+    }
+    .navRight{
+      display:flex; align-items:center; gap:10px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      box-shadow: 0 12px 40px rgba(0,0,0,.25);
+      color:var(--txt);
+      text-decoration:none;
+      font-size:13px;
+      transition: transform .18s ease, background .25s ease, border-color .25s ease;
+      cursor:pointer;
+      user-select:none;
+      position:relative;
+      overflow:hidden;
+    }
+    .pill:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,.18);
+      background: rgba(255,255,255,.08);
+    }
+    .pill .dot{
+      width:10px; height:10px; border-radius:50%;
+      background: linear-gradient(135deg, var(--b), var(--a));
+      box-shadow: 0 0 0 6px rgba(34,211,238,.12);
+    }
+    .pill::after{
+      content:"";
+      position:absolute; inset:-60%;
+      background: conic-gradient(from 120deg, rgba(255,255,255,0), rgba(255,255,255,.20), rgba(255,255,255,0));
+      opacity:.0;
+      transition: opacity .25s ease;
+    }
+    .pill:hover::after{ opacity:.55; animation: spin 3.6s linear infinite }
+
+    main{
+      position:relative;
+      z-index:2;
+    }
+
+    .hero{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 44px var(--pad) 30px;
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 24px;
+      align-items:stretch;
+    }
+    @media (max-width: 980px){
+      .hero{ grid-template-columns:1fr; padding-top:28px }
+    }
+
+    .heroCard{
+      border-radius: var(--radius-xl);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.035));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+      min-height: 420px;
+    }
+    .heroCard::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(600px 240px at 15% 25%, rgba(34,211,238,.20), transparent 55%),
+        radial-gradient(520px 260px at 85% 20%, rgba(124,58,237,.18), transparent 60%),
+        radial-gradient(700px 300px at 55% 90%, rgba(52,211,153,.10), transparent 65%);
+      pointer-events:none;
+      filter:saturate(1.2);
+      opacity:.95;
+      transform:translateZ(0);
+    }
+
+    .heroInner{
+      position:relative;
+      padding: 28px 26px 22px;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+      gap: 16px;
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: rgba(255,255,255,.78);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      width:fit-content;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(0,0,0,.20);
+      padding: 10px 12px;
+      border-radius: 999px;
+      backdrop-filter: blur(10px);
+    }
+    .kicker i{
+      width:10px; height:10px; border-radius:50%;
+      background: linear-gradient(135deg, var(--d), var(--b));
+      box-shadow: 0 0 0 6px rgba(251,113,133,.10);
+    }
+
+    h1{
+      margin:0;
+      font-size:var(--h1);
+      line-height:1.05;
+      letter-spacing:-.02em;
+    }
+    .gradText{
+      background: linear-gradient(135deg, rgba(255,255,255,.98), rgba(255,255,255,.65), rgba(34,211,238,.92));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .sub{
+      margin:0;
+      font-size: var(--p);
+      color: var(--muted);
+      line-height:1.8;
+      max-width: 62ch;
+    }
+
+    .heroBadges{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top: 6px;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      color: rgba(255,255,255,.85);
+      font-size: 13px;
+      backdrop-filter: blur(10px);
+      transition: transform .18s ease, background .25s ease;
+      user-select:none;
+    }
+    .badge:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.08);
+    }
+    .badge .mini{
+      width:10px;height:10px;border-radius:50%;
+      background: linear-gradient(135deg, var(--a), var(--b));
+      box-shadow: 0 0 0 6px rgba(124,58,237,.10);
+    }
+
+    .ctaRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+      margin-top:auto;
+      padding-top: 12px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color:var(--txt);
+      text-decoration:none;
+      font-size: 14px;
+      transition: transform .18s ease, background .25s ease, border-color .25s ease;
+      user-select:none;
+      position:relative;
+      overflow:hidden;
+    }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.18);
+    }
+    .btn.primary{
+      background: linear-gradient(135deg, rgba(124,58,237,.9), rgba(34,211,238,.75));
+      border-color: rgba(255,255,255,.16);
+      box-shadow: 0 20px 60px rgba(124,58,237,.22);
+    }
+    .btn.primary:hover{
+      transform: translateY(-1px) scale(1.01);
+      box-shadow: 0 26px 70px rgba(34,211,238,.16);
+    }
+    .btn .arrow{
+      width:18px;height:18px; display:inline-block;
+      border-radius: 8px;
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.14);
+      position:relative;
+    }
+    .btn .arrow::after{
+      content:"";
+      position:absolute;
+      left:6px; top:5px;
+      width:6px; height:6px;
+      border-right:2px solid rgba(255,255,255,.9);
+      border-bottom:2px solid rgba(255,255,255,.9);
+      transform: rotate(-45deg);
+    }
+
+    .side{
+      display:flex;
+      flex-direction:column;
+      gap: 14px;
+    }
+    .sideCard{
+      border-radius: var(--radius-xl);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+      position:relative;
+    }
+    .sideCard .inner{
+      padding: 18px 18px 16px;
+      position:relative;
+    }
+    .sideCard::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(360px 180px at 20% 0%, rgba(251,191,36,.14), transparent 55%),
+        radial-gradient(420px 240px at 90% 25%, rgba(251,113,133,.12), transparent 60%),
+        radial-gradient(460px 240px at 60% 110%, rgba(34,211,238,.10), transparent 58%);
+      pointer-events:none;
+      opacity:.9;
+    }
+    .sig{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom:10px;
+    }
+    .sig h3{
+      margin:0;
+      font-size: 16px;
+      letter-spacing:.02em;
+      color: rgba(255,255,255,.88);
+    }
+    .sig span{
+      font-size:12px;
+      color: rgba(255,255,255,.60);
+      font-family: var(--mono);
+    }
+    .signature{
+      width:100%;
+      height:auto;
+      opacity:.9;
+      margin-top: 6px;
+      filter: drop-shadow(0 18px 30px rgba(0,0,0,.35));
+    }
+    .kvList{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+      margin-top: 10px;
+    }
+    .kv{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      backdrop-filter: blur(10px);
+    }
+    .kv b{
+      font-size: 12px;
+      color: rgba(255,255,255,.65);
+      letter-spacing:.06em;
+      font-family: var(--mono);
+      text-transform:uppercase;
+      font-weight:700;
+    }
+    .kv span{
+      font-size: 14px;
+      color: rgba(255,255,255,.86);
+      white-space:nowrap;
+    }
+
+    .miniGrid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 980px){
+      .miniGrid{ grid-template-columns: 1fr }
+    }
+
+    section{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 18px var(--pad);
+    }
+    .sectionHead{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      margin: 28px 0 14px;
+    }
+    .sectionHead h2{
+      margin:0;
+      font-size: var(--h2);
+      letter-spacing:-.01em;
+    }
+    .sectionHead p{
+      margin:0;
+      color: var(--muted2);
+      font-size: 13px;
+      max-width: 60ch;
+      line-height:1.6;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+
+    .card{
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+      transform-style: preserve-3d;
+    }
+    .card::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(520px 240px at 10% 20%, rgba(124,58,237,.14), transparent 55%),
+        radial-gradient(520px 240px at 90% 10%, rgba(34,211,238,.12), transparent 55%),
+        radial-gradient(680px 280px at 60% 110%, rgba(52,211,153,.10), transparent 60%);
+      opacity:.85;
+      pointer-events:none;
+      transform:translateZ(0);
+    }
+    .card > .inner{
+      position:relative;
+      padding: 18px 18px 16px;
+    }
+
+    .span-6{ grid-column: span 6; }
+    .span-5{ grid-column: span 5; }
+    .span-7{ grid-column: span 7; }
+    .span-4{ grid-column: span 4; }
+    .span-8{ grid-column: span 8; }
+    .span-12{ grid-column: span 12; }
+
+    @media (max-width: 980px){
+      .span-6,.span-5,.span-7,.span-4,.span-8{ grid-column: span 12; }
+    }
+
+    .titleRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      margin-bottom: 6px;
+    }
+    .titleRow h3{
+      margin:0;
+      font-size: var(--h3);
+      letter-spacing:-.01em;
+    }
+    .chip{
+      font-family: var(--mono);
+      font-size:12px;
+      color: rgba(255,255,255,.72);
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.18);
+      backdrop-filter: blur(10px);
+      white-space:nowrap;
+    }
+    .card p{
+      margin:0;
+      color: var(--muted);
+      line-height:1.75;
+      font-size: var(--p);
+    }
+
+    ul.clean{
+      margin: 12px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:10px;
+    }
+    .li{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.16);
+      backdrop-filter: blur(10px);
+    }
+    .li i{
+      width:10px; height:10px; border-radius:50%;
+      margin-top: 6px;
+      background: linear-gradient(135deg, var(--b), var(--a));
+      box-shadow: 0 0 0 6px rgba(34,211,238,.10);
+      flex: 0 0 auto;
+    }
+    .li b{
+      font-size: 14px;
+      color: rgba(255,255,255,.88);
+      display:block;
+      margin-bottom: 2px;
+    }
+    .li span{
+      color: rgba(255,255,255,.68);
+      font-size: 13px;
+      line-height:1.6;
+      display:block;
+    }
+
+    .bars{
+      margin-top: 12px;
+      display:grid;
+      gap:12px;
+    }
+    .bar{
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.16);
+      padding: 12px 12px;
+      overflow:hidden;
+      position:relative;
+    }
+    .barTop{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      margin-bottom: 8px;
+    }
+    .barTop b{
+      font-size: 14px;
+      color: rgba(255,255,255,.88);
+    }
+    .barTop span{
+      font-family: var(--mono);
+      font-size: 12px;
+      color: rgba(255,255,255,.65);
+    }
+    .track{
+      width:100%;
+      height:10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      overflow:hidden;
+    }
+    .fill{
+      height:100%;
+      width:0%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(124,58,237,.95), rgba(34,211,238,.85), rgba(52,211,153,.85));
+      box-shadow: 0 18px 40px rgba(124,58,237,.18);
+    }
+    .spark{
+      position:absolute;
+      inset:-40%;
+      background: conic-gradient(from 180deg, rgba(255,255,255,0), rgba(255,255,255,.22), rgba(255,255,255,0));
+      opacity:0;
+      pointer-events:none;
+    }
+    .bar:hover .spark{
+      opacity:.6;
+      animation: spin 3.8s linear infinite;
+    }
+
+    .timeline{
+      margin-top: 12px;
+      display:grid;
+      gap: 14px;
+    }
+    .tlGroup{
+      border-radius: var(--radius-xl);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+      backdrop-filter: blur(10px);
+      overflow:hidden;
+      position:relative;
+    }
+    .tlHead{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding: 14px 14px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0));
+    }
+    .tlHead b{
+      font-size: 14px;
+      letter-spacing:.02em;
+      color: rgba(255,255,255,.88);
+    }
+    .tlHead span{
+      font-family: var(--mono);
+      font-size: 12px;
+      color: rgba(255,255,255,.65);
+    }
+    .tlBody{
+      padding: 12px 14px 14px;
+      display:grid;
+      gap:10px;
+    }
+    .event{
+      display:flex;
+      gap: 10px;
+      align-items:flex-start;
+      padding: 12px 12px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      position:relative;
+      overflow:hidden;
+    }
+    .event::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background:
+        radial-gradient(420px 200px at 12% 30%, rgba(34,211,238,.10), transparent 55%),
+        radial-gradient(420px 200px at 88% 20%, rgba(124,58,237,.10), transparent 60%);
+      opacity:.85;
+      pointer-events:none;
+    }
+    .event i{
+      width:10px;height:10px;border-radius:50%;
+      margin-top: 6px;
+      background: linear-gradient(135deg, var(--e), var(--d));
+      box-shadow: 0 0 0 6px rgba(251,191,36,.10);
+      flex: 0 0 auto;
+      position:relative;
+      z-index:1;
+    }
+    .event div{ position:relative; z-index:1 }
+    .event b{
+      display:block;
+      font-size: 14px;
+      color: rgba(255,255,255,.90);
+      margin-bottom: 2px;
+      line-height:1.5;
+    }
+    .event span{
+      display:block;
+      font-size: 13px;
+      color: rgba(255,255,255,.70);
+      line-height:1.6;
+    }
+
+    footer{
+      max-width:var(--max);
+      margin:0 auto;
+      padding: 24px var(--pad) 46px;
+      color: rgba(255,255,255,.55);
+      font-size: 12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    footer .left{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+    }
+    .sep{
+      height:1px;
+      background: rgba(255,255,255,.10);
+      max-width:var(--max);
+      margin: 12px auto 0;
+    }
+
+    .reveal{ opacity:0; transform: translateY(14px); }
+    .reveal2{ opacity:0; transform: translateY(18px) scale(.99); }
+
+    .muted{ color: var(--muted2) }
+    .mono{ font-family: var(--mono) }
+    .right{ text-align:right }
+
+    @media (prefers-reduced-motion: reduce){
+      .grain, .logo::after, .pill:hover::after, .bar:hover .spark{ animation:none !important }
+      *{ scroll-behavior:auto !important }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="fx"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"></div>
+  <div class="cursor2" aria-hidden="true"></div>
+
+  <header>
+    <div class="nav">
+      <a class="brand magnetic" href="#top" aria-label="トップへ">
+        <div class="logo" aria-hidden="true"></div>
+        <div class="brandText">
+          <b>Takumi Sakaguchi</b>
+          <span>Hardware / Embedded / Robotics</span>
+        </div>
+      </a>
+
+      <div class="navRight">
+        <nav aria-label="ページ内ナビゲーション">
+          <a class="magnetic" href="#about">About</a>
+          <a class="magnetic" href="#skills">Skills</a>
+          <a class="magnetic" href="#timeline">Timeline</a>
+          <a class="magnetic" href="#programming">Programming</a>
+        </nav>
+        <a class="pill magnetic" href="#contact" role="button">
+          <span class="dot" aria-hidden="true"></span>
+          <span>Contact</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="heroCard tilt reveal2">
+        <div class="heroInner">
+          <div class="kicker reveal">
+            <i aria-hidden="true"></i>
+            <span>ENTJ-A / Ebisu / Hardware-Driven Builder</span>
+          </div>
+
+          <h1 class="reveal">
+            坂口拓海<br />
+            <span class="gradText">Sakaguchi Takumi</span>
+          </h1>
+
+          <p class="sub reveal">
+            ハードウェア制御・OS組み込み・基礎加工を軸に、ロボティクス領域で「現場で動くもの」を最速で形にするタイプです。
+            企画〜実装〜試験のループを短く回し、結果で勝つことにこだわります。
+          </p>
+
+          <div class="heroBadges reveal">
+            <div class="badge"><span class="mini" aria-hidden="true"></span><span>出身：恵比寿</span></div>
+            <div class="badge"><span class="mini" aria-hidden="true"></span><span>MBTI：ENTJ-A（指揮官）</span></div>
+            <div class="badge"><span class="mini" aria-hidden="true"></span><span>Robocon / NEP / AKATSUKI</span></div>
+          </div>
+
+          <div class="ctaRow reveal">
+            <a class="btn primary magnetic" href="#timeline">
+              <span>経歴を見る</span>
+              <span class="arrow" aria-hidden="true"></span>
+            </a>
+            <a class="btn magnetic" href="#skills">
+              <span>スキルを見る</span>
+              <span class="arrow" aria-hidden="true"></span>
+            </a>
+            <a class="btn magnetic" href="#about">
+              <span>基本情報</span>
+              <span class="arrow" aria-hidden="true"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="side">
+        <div class="sideCard reveal2 tilt">
+          <div class="inner">
+            <div class="sig">
+              <h3>Identity</h3>
+              <span>Profile Card</span>
+            </div>
+
+            <svg class="signature" viewBox="0 0 840 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Takumi Sakaguchi Signature">
+              <defs>
+                <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="rgba(124,58,237,.95)"/>
+                  <stop offset=".5" stop-color="rgba(34,211,238,.90)"/>
+                  <stop offset="1" stop-color="rgba(52,211,153,.85)"/>
+                </linearGradient>
+                <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feGaussianBlur stdDeviation="6" result="b"/>
+                  <feColorMatrix in="b" type="matrix"
+                    values="1 0 0 0 0
+                            0 1 0 0 0
+                            0 0 1 0 0
+                            0 0 0 0.75 0" result="c"/>
+                  <feMerge>
+                    <feMergeNode in="c"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              <path d="M45 140
+                       C70 80, 115 70, 165 120
+                       C205 160, 260 165, 295 120
+                       C325 85, 370 85, 410 120
+                       C470 172, 545 170, 590 115
+                       C640 55, 705 55, 760 118
+                       C788 145, 810 145, 825 130"
+                    fill="none" stroke="url(#g)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"
+                    filter="url(#glow)"/>
+              <path d="M110 155
+                       C145 175, 190 175, 230 155"
+                    fill="none" stroke="rgba(255,255,255,.50)" stroke-width="3" stroke-linecap="round"/>
+              <text x="50" y="70" fill="rgba(255,255,255,.82)" font-size="22" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace">
+                TAKUMI SAKAGUCHI
+              </text>
+            </svg>
+
+            <div class="kvList">
+              <div class="kv">
+                <b>NAME</b>
+                <span>坂口拓海（さかぐちたくみ）</span>
+              </div>
+              <div class="kv">
+                <b>FROM</b>
+                <span>恵比寿</span>
+              </div>
+              <div class="kv">
+                <b>MBTI</b>
+                <span>ENTJ-A（指揮官）</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="miniGrid">
+          <div class="sideCard reveal2 tilt">
+            <div class="inner">
+              <div class="sig">
+                <h3>資格</h3>
+                <span>Licenses</span>
+              </div>
+              <ul class="clean" style="margin-top:12px">
+                <li class="li">
+                  <i aria-hidden="true"></i>
+                  <div>
+                    <b>第一級特殊無線技士</b>
+                    <span>無線・通信系の基礎と運用への理解</span>
+                  </div>
+                </li>
+                <li class="li">
+                  <i aria-hidden="true"></i>
+                  <div>
+                    <b>第三級特殊無線技士</b>
+                    <span>現場で扱える実務レベルの免許</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="sideCard reveal2 tilt">
+            <div class="inner">
+              <div class="sig">
+                <h3>Focus</h3>
+                <span>Core Strength</span>
+              </div>
+              <ul class="clean" style="margin-top:12px">
+                <li class="li">
+                  <i aria-hidden="true"></i>
+                  <div>
+                    <b>ハードウェア制御</b>
+                    <span>センサ・アクチュエータ・電装の統合</span>
+                  </div>
+                </li>
+                <li class="li">
+                  <i aria-hidden="true"></i>
+                  <div>
+                    <b>OS組み込みシステム</b>
+                    <span>Ubuntu組み込み / 周辺I/O / 低レイヤ</span>
+                  </div>
+                </li>
+                <li class="li">
+                  <i aria-hidden="true"></i>
+                  <div>
+                    <b>基礎加工</b>
+                    <span>実装に必要な加工・組み立ての基礎</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="sectionHead">
+        <div>
+          <h2 class="reveal">基本情報</h2>
+          <p class="reveal">プロフィールを“読みやすく”、ただし見た目は派手に。</p>
+        </div>
+        <div class="chip reveal">ABOUT / CORE</div>
+      </div>
+
+      <div class="grid">
+        <div class="card span-7 reveal2 tilt">
+          <div class="inner">
+            <div class="titleRow">
+              <h3>坂口拓海（さかぐちたくみ）</h3>
+              <div class="chip">Ebisu / ENTJ-A</div>
+            </div>
+            <p>
+              目的達成のために、仕様・コスト・納期・安全性を同時に最適化する思考が得意です。
+              ロボットや組み込みの現場では、机上の正しさよりも「動く・壊れにくい・直せる」が正義になりがちなので、
+              設計の段階から検証と保守性を織り込みます。
+            </p>
+          </div>
+        </div>
+
+        <div class="card span-5 reveal2 tilt">
+          <div class="inner">
+            <div class="titleRow">
+              <h3>Quick Facts</h3>
+              <div class="chip">DATA</div>
+            </div>
+            <ul class="clean">
+              <li class="li">
+                <i aria-hidden="true"></i>
+                <div>
+                  <b>出身</b>
+                  <span>恵比寿</span>
+                </div>
+              </li>
+              <li class="li">
+                <i aria-hidden="true"></i>
+                <div>
+                  <b>MBTI</b>
+                  <span>ENTJ-A（指揮官）</span>
+                </div>
+              </li>
+              <li class="li">
+                <i aria-hidden="true"></i>
+                <div>
+                  <b>得意領域</b>
+                  <span>Hardware Control / Embedded OS / Robotics</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="sectionHead">
+        <div>
+          <h2 class="reveal">保有スキル</h2>
+          <p class="reveal">スクロールでゲージが伸びる演出（GSAP）。</p>
+        </div>
+        <div class="chip reveal">SKILLS</div>
+      </div>
+
+      <div class="grid">
+        <div class="card span-6 reveal2 tilt">
+          <div class="inner">
+            <div class="titleRow">
+              <h3>Core Skills</h3>
+              <div class="chip">H/W & Embedded</div>
+            </div>
+
+            <div class="bars">
+              <div class="bar" data-fill="92">
+                <div class="spark" aria-hidden="true"></div>
+                <div class="barTop">
+                  <b>ハードウェア制御</b>
+                  <span>92%</span>
+                </div>
+                <div class="track"><div class="fill"></div></div>
+              </div>
+
+              <div class="bar" data-fill="88">
+                <div class="spark" aria-hidden="true"></div>
+                <div class="barTop">
+                  <b>OS組み込みシステム</b>
+                  <span>88%</span>
+                </div>
+                <div class="track"><div class="fill"></div></div>
+              </div>
+
+              <div class="bar" data-fill="76">
+                <div class="spark" aria-hidden="true"></div>
+                <div class="barTop">
+                  <b>基礎加工</b>
+                  <span>76%</span>
+                </div>
+                <div class="track"><div class="fill"></div></div>
+              </div>
+            </div>
+
+            <p style="margin-top:12px" class="muted">
+              目安のパーセンテージです。必要なら、実績（どの機体／どの回路／どのOS）に合わせて精密に調整できます。
+            </p>
+          </div>
+        </div>
+
+        <div class="card span-6 reveal2 tilt">
+          <div class="inner">
+            <div class="titleRow">
+              <h3>資格</h3>
+              <div class="chip">LICENSES</div>
+            </div>
+
+            <ul class="clean">
+              <li class="li">
+                <i aria-hidden="true"></i>
+                <div>
+                  <b>第一級特殊無線技士</b>
+                  <span>制度理解と安全運用、無線系の基礎知識</span>
+                </div>
+              </li>
+              <li class="li">
+                <i aria-hidden="true"></i>
+                <div>
+                  <b>第三級特殊無線技士</b>
+                  <span>現場運用に必要な免許・手続きへの理解</span>
+                </div>
+              </li>
+            </ul>
+
+            <div class="titleRow" style="margin-top:14px">
+              <h3>得意な動き方</h3>
+              <div class="chip">STYLE</div>
+            </div>
+            <ul class="clean">
+              <li class="li">
+                <i aria-hidden="true"></i>
+                <div>
+                  <b>短サイクル検証</b>
+                  <span>試作→測定→改善を高速で回す</span>
+                </div>
+              </li>
+              <li class="li">
+                <i aria-hidden="true"></i>
+                <div>
+                  <b>現場最適</b>
+                  <span>壊れにくい・直しやすい設計を優先</span>
+                </div>
+              </li>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline">
+      <div class="sectionHead">
+        <div>
+          <h2 class="reveal">経歴</h2>
+          <p class="reveal">年次ごとにカード化。スクロールで立ち上がる演出。</p>
+        </div>
+        <div class="chip reveal">TIMELINE</div>
+      </div>
+
+      <div class="grid">
+        <div class="card span-12 reveal2">
+          <div class="inner">
+            <div class="titleRow">
+              <h3>高専</h3>
+              <div class="chip">KOSEN</div>
+            </div>
+
+            <div class="timeline">
+              <div class="tlGroup reveal2">
+                <div class="tlHead">
+                  <b>2025年</b>
+                  <span>Leadership & Awards</span>
+                </div>
+                <div class="tlBody">
+                  <div class="event">
+                    <i aria-hidden="true"></i>
+                    <div>
+                      <b>経済産業省 AKATUKIプロジェクト 採択（リーダー）</b>
+                      <span>推進体制の設計・チーム牽引・成果物の品質と速度を両立</span>
+                    </div>
+                  </div>
+                  <div class="event">
+                    <i aria-hidden="true"></i>
+                    <div>
+                      <b>高専ロボコン2025 中国大会 デザイン賞 / 全国出場（Aリーダー）</b>
+                      <span>設計思想・実装品質・運用性を統合し、評価につながるアウトプットへ</span>
+                    </div>
+                  </div>
+                  <div class="event">
+                    <i aria-hidden="true"></i>
+                    <div>
+                      <b>NEDO NEP 片川さんのやつ（ハードウェアリーダー）</b>
+                      <span>ハードウェア側の意思決定と実装を主導</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tlGroup reveal2">
+                <div class="tlHead">
+                  <b>2024年</b>
+                  <span>Team Lead</span>
+                </div>
+                <div class="tlBody">
+                  <div class="event">
+                    <i aria-hidden="true"></i>
+                    <div>
+                      <b>高専ロボコン2024（Bリーダー）</b>
+                      <span>チーム内の推進と、実装の落とし込みを担当</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="titleRow" style="margin-top:18px">
+              <h3>中学</h3>
+              <div class="chip">JUNIOR HIGH</div>
+            </div>
+
+            <div class="timeline">
+              <div class="tlGroup reveal2">
+                <div class="tlHead">
+                  <b>2022年</b>
+                  <span>Activities</span>
+                </div>
+                <div class="tlBody">
+                  <div class="event">
+                    <i aria-hidden="true"></i>
+                    <div>
+                      <b>#地球塾2050 B（NTT）</b>
+                      <span>プロジェクト型学習での発想・実行経験</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="programming">
+      <div class="sectionHead">
+        <div>
+          <h2 class="reveal">プログラミングスキル</h2>
+          <p class="reveal">カードにマウスを乗せると3D傾き＋発光。視線誘導を強めています。</p>
+        </div>
+        <div class="chip reveal">DEV STACK</div>
+      </div>
+
+      <div class="grid">
+        <div class="card span-6 reveal2 tilt">
+          <div class="inner">
+            <div class="titleRow">
+              <h3>マイコン / ボード</h3>
+              <div class="chip">MCU</div>
+            </div>
+            <ul class="clean">
+              <li class="li">
+                <i aria-hidden="true"></i>
+                <div>
+                  <b>Arduino</b>
+                  <span>プロトタイピング、I/O制御、周辺機器統合</span>
+                </div>
+              </li>
+              <li class="li">
+                <i aria-hidden="true"></i>
+                <div>
+                  <b>Mbed</b>
+                  <span>組み込み開発の基礎、ドライバ周り</span>
+                </div>
+              </li>
+              <li class="li">
+                <i aria-hidden="true"></i>
+                <div>
+                  <b>Raspberry Pi Pico</b>
+                  <span>小型制御、センサ入力、リアルタイム制御</span>
+                </div>
+              </li>
+              <li class="li">
+                <i aria-hidden="true"></i>
+                <div>
+                  <b>STM32</b>
+                  <span>低レイヤ寄りの実装、制御寄りの最適化</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card span-6 reveal2 tilt">
+          <div class="inner">
+            <div class="titleRow">
+              <h3>言語 / 実行環境</h3>
+              <div class="chip">LANG</div>
+            </div>
+            <ul class="clean">
+              <li class="li">
+                <i aria-hidden="true"></i>
+                <div>
+                  <b>C</b>
+                  <span>組み込み、速度・メモリ制約下の実装</span>
+                </div>
+              </li>
+              <li class="li">
+                <i aria-hidden="true"></i>
+                <div>
+                  <b>Python</b>
+                  <span>検証用スクリプト、データ処理、制御補助</span>
+                </div>
+              </li>
+              <li class="li">
+                <i aria-hidden="true"></i>
+                <div>
+                  <b>Ubntu 組み込み</b>
+                  <span>システム構築、運用、パッケージ管理</span>
+                </div>
+              </li>
+              <li class="li">
+                <i aria-hidden="true"></i>
+                <div>
+                  <b>Python3.1 / ROS2 Humble / OpenCV（機械学習）</b>
+                  <span>ロボット基盤、画像処理、認識の入り口</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="sectionHead">
+        <div>
+          <h2 class="reveal">Contact</h2>
+          <p class="reveal">必要ならここにメール・SNS・GitHub等を追加できます。</p>
+        </div>
+        <div class="chip reveal">GET IN TOUCH</div>
+      </div>
+
+      <div class="grid">
+        <div class="card span-12 reveal2 tilt">
+          <div class="inner">
+            <div class="titleRow">
+              <h3>リンク（例）</h3>
+              <div class="chip">LINKS</div>
+            </div>
+            <p>
+              ここは運用に合わせて差し替え可能です。たとえば「GitHub / X / Qiita / SpeakerDeck / Mail」など。
+              今の状態だとダミーになっているので、希望のリンクを言ってくれれば埋め込みます。
+            </p>
+
+            <div style="display:flex; flex-wrap:wrap; gap:12px; margin-top:14px">
+              <a class="btn magnetic" href="#top"><span>トップへ</span><span class="arrow" aria-hidden="true"></span></a>
+              <a class="btn magnetic" href="#skills"><span>スキルへ</span><span class="arrow" aria-hidden="true"></span></a>
+              <a class="btn magnetic" href="#timeline"><span>経歴へ</span><span class="arrow" aria-hidden="true"></span></a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="sep" aria-hidden="true"></div>
+    <footer>
+      <div class="left">
+        <div class="mono">© <span id="y"></span> Takumi Sakaguchi</div>
+        <div>Designed for high-impact motion. Optimized for readability.</div>
+      </div>
+      <div class="mono right">Build: One-file / GSAP / Lenis / tsParticles</div>
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.5.0/tsparticles.bundle.min.js"></script>
+
+  <script>
+    (function(){
+      document.getElementById("y").textContent = new Date().getFullYear();
+
+      const c1 = document.querySelector(".cursor");
+      const c2 = document.querySelector(".cursor2");
+      let mx = window.innerWidth * 0.5;
+      let my = window.innerHeight * 0.4;
+      let x1 = mx, y1 = my, x2 = mx, y2 = my;
+
+      window.addEventListener("mousemove", (e)=>{
+        mx = e.clientX;
+        my = e.clientY;
+      }, {passive:true});
+
+      function tick(){
+        x1 += (mx - x1) * 0.35;
+        y1 += (my - y1) * 0.35;
+        x2 += (mx - x2) * 0.08;
+        y2 += (my - y2) * 0.08;
+
+        c1.style.left = x1 + "px";
+        c1.style.top  = y1 + "px";
+        c2.style.left = x2 + "px";
+        c2.style.top  = y2 + "px";
+
+        requestAnimationFrame(tick);
+      }
+      tick();
+
+      let lenis = null;
+      if (window.Lenis){
+        lenis = new Lenis({
+          duration: 1.05,
+          smooth: true,
+          smoothTouch: false,
+          easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t))
+        });
+        function raf(time){
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        document.querySelectorAll('a[href^="#"]').forEach(a=>{
+          a.addEventListener("click", (e)=>{
+            const id = a.getAttribute("href");
+            if (!id || id === "#") return;
+            const el = document.querySelector(id);
+            if (!el) return;
+            e.preventDefault();
+            lenis.scrollTo(el, { offset: -70 });
+          });
+        });
+      }
+
+      const magnets = document.querySelectorAll(".magnetic");
+      magnets.forEach((el)=>{
+        const strength = 16;
+        let rect = null;
+
+        el.addEventListener("mouseenter", ()=>{
+          rect = el.getBoundingClientRect();
+        });
+
+        el.addEventListener("mousemove", (e)=>{
+          if (!rect) rect = el.getBoundingClientRect();
+          const dx = e.clientX - (rect.left + rect.width/2);
+          const dy = e.clientY - (rect.top + rect.height/2);
+          const tx = (dx / rect.width) * strength;
+          const ty = (dy / rect.height) * strength;
+          el.style.transform = "translate(" + tx + "px," + ty + "px)";
+        });
+
+        el.addEventListener("mouseleave", ()=>{
+          el.style.transform = "translate(0px,0px)";
+        });
+      });
+
+      const tilts = document.querySelectorAll(".tilt");
+      tilts.forEach((card)=>{
+        const maxTilt = 10;
+        let r = null;
+
+        card.addEventListener("mouseenter", ()=>{
+          r = card.getBoundingClientRect();
+          card.style.transition = "transform 120ms ease";
+          setTimeout(()=>{ card.style.transition = "transform 0ms ease"; }, 140);
+        });
+
+        card.addEventListener("mousemove", (e)=>{
+          if (!r) r = card.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width;
+          const py = (e.clientY - r.top) / r.height;
+          const rx = (py - 0.5) * -2 * maxTilt;
+          const ry = (px - 0.5) *  2 * maxTilt;
+          card.style.transform = "perspective(900px) rotateX(" + rx + "deg) rotateY(" + ry + "deg) translateY(-1px)";
+        });
+
+        card.addEventListener("mouseleave", ()=>{
+          card.style.transition = "transform 220ms ease";
+          card.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0px)";
+          setTimeout(()=>{ card.style.transition = ""; }, 240);
+        });
+      });
+
+      async function initParticles(){
+        if (!window.tsParticles) return;
+        await tsParticles.load("fx", {
+          background: { color: { value: "transparent" } },
+          fpsLimit: 60,
+          fullScreen: { enable: true, zIndex: 0 },
+          particles: {
+            number: { value: 70, density: { enable: true, area: 900 } },
+            color: { value: ["#7c3aed","#22d3ee","#34d399","#fb7185","#fbbf24"] },
+            shape: { type: "circle" },
+            opacity: { value: { min: 0.12, max: 0.36 } },
+            size: { value: { min: 1, max: 3 } },
+            links: {
+              enable: true,
+              distance: 130,
+              color: "#ffffff",
+              opacity: 0.08,
+              width: 1
+            },
+            move: {
+              enable: true,
+              speed: 0.85,
+              direction: "none",
+              random: true,
+              straight: false,
+              outModes: { default: "out" }
+            }
+          },
+          interactivity: {
+            detectsOn: "window",
+            events: {
+              onHover: { enable: true, mode: "repulse" },
+              onClick: { enable: true, mode: "push" },
+              resize: true
+            },
+            modes: {
+              repulse: { distance: 110, duration: 0.35 },
+              push: { quantity: 3 }
+            }
+          },
+          detectRetina: true
+        });
+      }
+      initParticles();
+
+      const canGSAP = !!window.gsap && !!window.ScrollTrigger;
+      if (canGSAP){
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.utils.toArray(".reveal").forEach((el)=>{
+          gsap.to(el, {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 88%",
+              toggleActions: "play none none reverse"
+            }
+          });
+        });
+
+        gsap.utils.toArray(".reveal2").forEach((el)=>{
+          gsap.to(el, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 1.05,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              toggleActions: "play none none reverse"
+            }
+          });
+        });
+
+        gsap.fromTo(".heroCard", {opacity:0, y: 20}, {opacity:1, y:0, duration: 1.0, ease:"power3.out", delay: 0.05});
+        gsap.fromTo(".side .sideCard", {opacity:0, y: 18}, {opacity:1, y:0, duration: 1.05, ease:"power3.out", stagger:0.08, delay: 0.12});
+
+        document.querySelectorAll(".bar").forEach((bar)=>{
+          const fill = bar.querySelector(".fill");
+          const target = parseFloat(bar.getAttribute("data-fill") || "70");
+          gsap.to(fill, {
+            width: target + "%",
+            duration: 1.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: bar,
+              start: "top 85%"
+            }
+          });
+        });
+
+        if (lenis){
+          lenis.on("scroll", ScrollTrigger.update);
+          gsap.ticker.add((time)=>{
+            lenis.raf(time * 1000);
+          });
+          gsap.ticker.lagSmoothing(0);
+        }
+      } else {
+        document.querySelectorAll(".reveal,.reveal2").forEach(el=>{
+          el.style.opacity = "1";
+          el.style.transform = "none";
+        });
+        document.querySelectorAll(".bar").forEach(bar=>{
+          const fill = bar.querySelector(".fill");
+          const target = parseFloat(bar.getAttribute("data-fill") || "70");
+          fill.style.width = target + "%";
+        });
+      }
+
+      const isTouch = matchMedia("(pointer: coarse)").matches;
+      if (isTouch){
+        document.querySelector(".cursor").style.display = "none";
+        document.querySelector(".cursor2").style.display = "none";
+      }
+    })();
+  </script>
+</body>
+</html>
