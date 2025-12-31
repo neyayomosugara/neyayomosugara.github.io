@@ -5,14 +5,41 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="color-scheme" content="dark" />
   <title>坂口拓海 | Portfolio</title>
+
   <meta name="description" content="坂口拓海（さかぐちたくみ）| Hardware / Embedded / Robotics Portfolio" />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://neyayomosugara.github.io/" />
+
   <meta property="og:title" content="坂口拓海 | Portfolio" />
   <meta property="og:description" content="Hardware / Embedded / Robotics" />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://neyayomosugara.github.io/" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Person schema (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "坂口 拓海",
+    "alternateName": "Takumi Sakaguchi",
+    "url": "https://neyayomosugara.github.io/",
+    "sameAs": [
+      "https://www.instagram.com/neya_kosen/"
+    ],
+    "jobTitle": "Hardware / Embedded / Robotics",
+    "knowsAbout": [
+      "Hardware Control",
+      "Embedded Systems",
+      "Robotics",
+      "Wireless",
+      "KOSEN Robocon"
+    ]
+  }
+  </script>
 
   <style>
     :root{
@@ -59,6 +86,11 @@
       --display: "Space Grotesk", ui-sans-serif, system-ui;
 
       --headerH: 64px;
+
+      /* Top color like your image */
+      --topBlue: #114c66;
+      --topBlue2:#0f4258;
+      --topInk: #05060a;
     }
 
     *{box-sizing:border-box}
@@ -328,348 +360,215 @@
     main{ position:relative; z-index:2; }
     section{ max-width:var(--max); margin:0 auto; padding: 18px var(--pad); scroll-margin-top: calc(var(--headerH) + 14px); }
 
-    .hero{
-      padding: 46px var(--pad) 26px;
-      display:grid;
-      grid-template-columns: 1.25fr .75fr;
-      gap: 18px;
-      align-items:stretch;
-    }
-    @media (max-width: 980px){
-      .hero{ grid-template-columns:1fr; padding-top: 24px; }
-      header{ height:auto; }
-      .brand{ min-width:unset; }
-    }
-
-    .heroCard{
-      border-radius: var(--radius-xl);
-      border: 1px solid transparent;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.028)) padding-box,
-        linear-gradient(135deg, rgba(214,180,106,.60), rgba(34,211,238,.45), rgba(124,58,237,.45), rgba(214,180,106,.35)) border-box;
-      box-shadow: var(--shadow);
-      overflow:hidden;
+    /* =========================
+       TOP (your screenshot style)
+       ========================= */
+    .cover{
       position:relative;
-      min-height: 460px;
-      transform-style: preserve-3d;
-      isolation:isolate;
-    }
-    .heroCard::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(700px 300px at 12% 20%, rgba(214,180,106,.16), transparent 58%),
-        radial-gradient(640px 320px at 88% 10%, rgba(34,211,238,.14), transparent 62%),
-        radial-gradient(820px 360px at 55% 96%, rgba(124,58,237,.12), transparent 64%);
-      pointer-events:none;
-      opacity:.95;
-      transform:translateZ(0);
-      z-index:0;
-    }
-    .heroCard::after{
-      content:"";
-      position:absolute;
-      inset:-1px;
-      background: radial-gradient(420px 320px at var(--hx, 50%) var(--hy, 40%), rgba(255,255,255,.16), transparent 60%);
-      opacity:.0;
-      transition: opacity .25s ease;
-      pointer-events:none;
-      z-index:1;
-      mix-blend-mode: screen;
-    }
-    .heroCard:hover::after{ opacity:.9; }
-
-    .heroInner{
-      position:relative;
-      padding: 28px 26px 22px;
-      height:100%;
+      min-height: 100svh;
       display:flex;
-      flex-direction:column;
-      gap: 16px;
-      z-index:2;
-    }
-
-    .kicker{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-family: var(--mono);
-      font-size: 12px;
-      color: rgba(255,255,255,.80);
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      width:fit-content;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.20);
-      padding: 10px 12px;
-      border-radius: 999px;
-      backdrop-filter: blur(12px);
-    }
-    .kicker i{
-      width:10px; height:10px; border-radius:50%;
-      background: linear-gradient(135deg, var(--gold), var(--b));
-      box-shadow: 0 0 0 6px rgba(214,180,106,.10);
-    }
-
-    h1{
-      margin:0;
-      font-size:var(--h1);
-      line-height:1.03;
-      letter-spacing:-.02em;
-    }
-    .titleA{
-      font-family: var(--display);
-      text-transform: uppercase;
-      letter-spacing: .06em;
-      font-weight: 700;
-      font-size: clamp(12px, 1vw, 13px);
-      color: rgba(255,255,255,.68);
-      margin-top: -6px;
-    }
-    .gradText{
-      background: linear-gradient(135deg, rgba(255,255,255,.96), rgba(255,255,255,.62), rgba(214,180,106,.90), rgba(34,211,238,.85));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-    .ghost{
-      position:absolute;
-      right: 18px;
-      top: 16px;
-      font-family: var(--display);
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      font-size: clamp(34px, 5vw, 62px);
-      color: rgba(255,255,255,.06);
-      pointer-events:none;
-      user-select:none;
-      z-index:1;
-      filter: blur(.2px);
-    }
-
-    .sub{
-      margin:0;
-      font-size: var(--p);
-      color: var(--muted);
-      line-height:1.9;
-      max-width: 66ch;
-    }
-
-    .heroBadges{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top: 6px;
-    }
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding:10px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-      color: rgba(255,255,255,.86);
-      font-size: 13px;
-      backdrop-filter: blur(12px);
-      transition: transform .18s ease, background .25s ease, border-color .25s ease;
-      user-select:none;
-    }
-    .badge:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.08);
-      border-color: rgba(255,255,255,.16);
-    }
-    .badge .mini{
-      width:10px;height:10px;border-radius:50%;
-      background: linear-gradient(135deg, var(--gold), var(--b), var(--a));
-      box-shadow: 0 0 0 6px rgba(34,211,238,.08);
-    }
-
-    .ctaRow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      align-items:center;
-      margin-top:auto;
-      padding-top: 12px;
-    }
-
-    .btn{
-      display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      color:var(--txt);
-      text-decoration:none;
-      font-size: 14px;
-      transition: transform .18s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease;
-      user-select:none;
-      position:relative;
-      overflow:hidden;
-      backdrop-filter: blur(12px);
-    }
-    .btn::before{
-      content:"";
-      position:absolute; inset:-60% -30%;
-      background: linear-gradient(120deg, rgba(255,255,255,0), rgba(255,255,255,.18), rgba(255,255,255,0));
-      transform: translateX(-60%);
-      transition: transform .55s ease;
-      opacity:.55;
-    }
-    .btn:hover::before{ transform: translateX(60%); }
-    .btn:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.08);
-      border-color: rgba(255,255,255,.18);
-      box-shadow: 0 18px 55px rgba(0,0,0,.28);
-    }
-    .btn.primary{
-      background: linear-gradient(135deg, rgba(214,180,106,.92), rgba(34,211,238,.74), rgba(124,58,237,.72));
-      border-color: rgba(255,255,255,.16);
-      box-shadow: 0 26px 80px rgba(34,211,238,.12);
-    }
-    .btn.primary:hover{
-      transform: translateY(-1px) scale(1.01);
-      box-shadow: 0 34px 95px rgba(214,180,106,.14);
-    }
-    .btn .arrow{
-      width:18px;height:18px; display:inline-block;
-      border-radius: 8px;
-      background: rgba(0,0,0,.24);
-      border: 1px solid rgba(255,255,255,.14);
-      position:relative;
-    }
-    .btn .arrow::after{
-      content:"";
-      position:absolute;
-      left:6px; top:5px;
-      width:6px; height:6px;
-      border-right:2px solid rgba(255,255,255,.9);
-      border-bottom:2px solid rgba(255,255,255,.9);
-      transform: rotate(-45deg);
-    }
-
-    .side{
-      display:flex;
-      flex-direction:column;
-      gap: 14px;
-    }
-    .sideCard{
-      border-radius: var(--radius-xl);
-      border: 1px solid transparent;
+      padding: calc(var(--headerH) + 40px) var(--pad) 78px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.028)) padding-box,
-        linear-gradient(135deg, rgba(255,255,255,.14), rgba(255,255,255,.06), rgba(255,255,255,.14)) border-box;
-      box-shadow: var(--shadow2);
+        radial-gradient(900px 600px at 20% 30%, rgba(255,255,255,.08), rgba(255,255,255,0) 60%),
+        radial-gradient(900px 600px at 85% 40%, rgba(0,0,0,.22), rgba(0,0,0,0) 60%),
+        linear-gradient(180deg, var(--topBlue), var(--topBlue2));
       overflow:hidden;
-      position:relative;
-      transform-style: preserve-3d;
       isolation:isolate;
     }
-    .sideCard::before{
+    .cover::after{
       content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(420px 220px at 18% 0%, rgba(214,180,106,.14), transparent 58%),
-        radial-gradient(520px 280px at 95% 25%, rgba(34,211,238,.12), transparent 60%),
-        radial-gradient(520px 300px at 60% 120%, rgba(124,58,237,.10), transparent 60%);
-      pointer-events:none;
-      opacity:.92;
-      z-index:0;
-    }
-    .sideCard::after{
-      content:"";
-      position:absolute;
-      inset:-1px;
-      background: radial-gradient(420px 320px at var(--hx, 50%) var(--hy, 40%), rgba(255,255,255,.14), transparent 60%);
-      opacity:.0;
-      transition: opacity .25s ease;
-      pointer-events:none;
+      position:absolute; left:0; right:0; bottom:-1px;
+      height: 180px;
+      background: linear-gradient(180deg, rgba(5,6,10,0), rgba(5,6,10,1));
       z-index:1;
-      mix-blend-mode: screen;
+      pointer-events:none;
     }
-    .sideCard:hover::after{ opacity:.85; }
 
-    .sideCard .inner{
-      padding: 18px 18px 16px;
+    .coverInner{
+      width: min(1120px, 100%);
       position:relative;
       z-index:2;
+      transform: translateY(calc(var(--scrollP, 0) * -26px));
+      opacity: calc(1 - (var(--scrollP, 0) * 1.25));
+      transition: opacity .05s linear;
     }
 
-    .sig{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:10px;
-      margin-bottom:10px;
-    }
-    .sig h3{
-      margin:0;
-      font-size: 14px;
-      letter-spacing:.10em;
-      text-transform: uppercase;
-      font-family: var(--display);
-      color: rgba(255,255,255,.88);
-    }
-    .sig span{
-      font-size:12px;
-      color: rgba(255,255,255,.55);
-      font-family: var(--mono);
-    }
-    .signature{
-      width:100%;
-      height:auto;
-      opacity:.94;
-      margin-top: 6px;
-      filter: drop-shadow(0 18px 30px rgba(0,0,0,.35));
-    }
-
-    .kvList{
+    .coverGrid{
       display:grid;
-      grid-template-columns: 1fr;
-      gap:10px;
-      margin-top: 10px;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 54px;
+      align-items:center;
     }
-    .kv{
+
+    .nameCard{
+      width: min(620px, 100%);
+      aspect-ratio: 4 / 3;
+      background: linear-gradient(180deg, rgba(0,0,0,.92), rgba(0,0,0,.82));
+      border: 1px solid rgba(255,255,255,.12);
+      box-shadow: 0 30px 90px rgba(0,0,0,.55);
       display:flex;
       align-items:center;
-      justify-content:space-between;
-      gap:10px;
-      padding: 12px 12px;
-      border-radius: 16px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      backdrop-filter: blur(12px);
+      justify-content:center;
+      text-align:center;
+      padding: 30px 28px;
+      position:relative;
+      overflow:hidden;
     }
-    .kv b{
-      font-size: 12px;
-      color: rgba(255,255,255,.62);
-      letter-spacing:.10em;
-      font-family: var(--mono);
-      text-transform:uppercase;
-      font-weight:700;
+    .nameCard::before{
+      content:"";
+      position:absolute; inset:-2px;
+      background: radial-gradient(460px 360px at 50% 40%, rgba(255,255,255,.08), rgba(255,255,255,0) 62%);
+      opacity:.75;
+      pointer-events:none;
     }
-    .kv span{
-      font-size: 14px;
+    .nameCard::after{
+      content:"";
+      position:absolute; inset:-60%;
+      background: conic-gradient(from 120deg, rgba(255,255,255,0), rgba(255,255,255,.12), rgba(255,255,255,0));
+      opacity:.22;
+      animation: spin 10s linear infinite;
+      pointer-events:none;
+    }
+
+    .nameStack{
+      position:relative;
+      z-index:2;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap: 18px;
+      transform: translateY(calc(var(--scrollP, 0) * -10px));
+    }
+    .nameEn{
+      font-family: var(--display);
+      font-size: clamp(16px, 1.8vw, 22px);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.92);
+    }
+    .nameJa{
+      font-size: clamp(16px, 1.7vw, 22px);
+      letter-spacing: .12em;
       color: rgba(255,255,255,.88);
-      white-space:nowrap;
+    }
+    .nameTags{
+      font-family: var(--mono);
+      font-size: clamp(14px, 1.7vw, 20px);
+      letter-spacing: .06em;
+      color: rgba(255,255,255,.86);
+      opacity:.95;
     }
 
-    .miniGrid{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
+    .photoBlock{
+      position:relative;
+      width: 100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      min-height: 320px;
     }
+    .photoLabel{
+      position:absolute;
+      top: -8px;
+      left: 10px;
+      font-size: 18px;
+      letter-spacing: .12em;
+      color: rgba(255,255,255,.92);
+      text-shadow: 0 18px 50px rgba(0,0,0,.35);
+      opacity: calc(.95 - (var(--scrollP, 0) * .45));
+      transform: translateY(calc(var(--scrollP, 0) * -10px));
+      user-select:none;
+    }
+    .photoFrame{
+      width: min(420px, 100%);
+      aspect-ratio: 4 / 5;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.24);
+      box-shadow: 0 30px 90px rgba(0,0,0,.45);
+      overflow:hidden;
+      position:relative;
+      transform: translateY(calc(var(--scrollP, 0) * -16px));
+    }
+    .photoFrame::after{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(420px 320px at 50% 20%, rgba(255,255,255,.10), rgba(255,255,255,0) 65%);
+      pointer-events:none;
+      opacity:.85;
+    }
+    .photoFrame img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+      transform: scale(1.02);
+      filter: saturate(1.02) contrast(1.05);
+    }
+
+    .scrollCue{
+      position:absolute;
+      left:50%;
+      bottom: 26px;
+      transform: translateX(-50%);
+      font-family: var(--mono);
+      font-size: 12px;
+      letter-spacing: .22em;
+      color: rgba(255,255,255,.82);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap: 10px;
+      opacity: calc(1 - (var(--scrollP, 0) * 1.1));
+      pointer-events:none;
+      z-index:2;
+    }
+    .scrollCue .line{
+      width: 1px;
+      height: 38px;
+      background: linear-gradient(180deg, rgba(255,255,255,.0), rgba(255,255,255,.85), rgba(255,255,255,0));
+      animation: cue 1.65s ease-in-out infinite;
+      opacity:.95;
+    }
+    @keyframes cue{
+      0%{ transform: translateY(-4px); opacity:.55; }
+      50%{ transform: translateY(6px); opacity:1; }
+      100%{ transform: translateY(-4px); opacity:.55; }
+    }
+
     @media (max-width: 980px){
-      .miniGrid{ grid-template-columns: 1fr }
+      header{ height:auto; }
+      .brand{ min-width:unset; }
+      .cover{
+        padding: calc(var(--headerH) + 22px) var(--pad) 70px;
+      }
+      .coverGrid{
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+      .photoLabel{
+        position:static;
+        margin: 2px 0 8px;
+        align-self:flex-start;
+      }
+      .photoBlock{
+        flex-direction:column;
+        align-items:flex-start;
+        justify-content:flex-start;
+      }
+      .photoFrame{
+        width: min(520px, 100%);
+      }
+      .nameCard{
+        aspect-ratio: 16 / 10;
+      }
     }
 
+    /* =========================
+       Sections (existing style)
+       ========================= */
     .sectionHead{
       display:flex;
       align-items:flex-end;
@@ -985,6 +884,56 @@
       box-shadow: 0 0 0 6px rgba(34,211,238,.08);
     }
 
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color:var(--txt);
+      text-decoration:none;
+      font-size: 14px;
+      transition: transform .18s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease;
+      user-select:none;
+      position:relative;
+      overflow:hidden;
+      backdrop-filter: blur(12px);
+    }
+    .btn::before{
+      content:"";
+      position:absolute; inset:-60% -30%;
+      background: linear-gradient(120deg, rgba(255,255,255,0), rgba(255,255,255,.18), rgba(255,255,255,0));
+      transform: translateX(-60%);
+      transition: transform .55s ease;
+      opacity:.55;
+    }
+    .btn:hover::before{ transform: translateX(60%); }
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.18);
+      box-shadow: 0 18px 55px rgba(0,0,0,.28);
+    }
+    .btn .arrow{
+      width:18px;height:18px; display:inline-block;
+      border-radius: 8px;
+      background: rgba(0,0,0,.24);
+      border: 1px solid rgba(255,255,255,.14);
+      position:relative;
+    }
+    .btn .arrow::after{
+      content:"";
+      position:absolute;
+      left:6px; top:5px;
+      width:6px; height:6px;
+      border-right:2px solid rgba(255,255,255,.9);
+      border-bottom:2px solid rgba(255,255,255,.9);
+      transform: rotate(-45deg);
+    }
+
     footer{
       max-width:var(--max);
       margin:0 auto;
@@ -1016,14 +965,14 @@
     .right{ text-align:right }
 
     @media (prefers-reduced-motion: reduce){
-      .grain, .logo::after, .pill:hover::after, .bar:hover .spark, .gridLines{ animation:none !important }
+      .grain, .logo::after, .pill:hover::after, .bar:hover .spark, .gridLines, .scrollCue .line{ animation:none !important }
       *{ scroll-behavior:auto !important }
     }
   </style>
 </head>
 
 <body>
-  <a class="skip" href="#content">本文へ移動</a>
+  <a class="skip" href="#about">本文へ移動</a>
 
   <div class="progress" aria-hidden="true"><div class="progressBar" aria-hidden="true"></div></div>
 
@@ -1059,176 +1008,34 @@
   </header>
 
   <main id="top">
-    <div id="content"></div>
-
-    <section class="hero">
-      <div class="heroCard tilt reveal2">
-        <div class="heroInner">
-          <div class="ghost" aria-hidden="true">TAKUMI</div>
-
-          <div class="kicker reveal">
-            <i aria-hidden="true"></i>
-            <span>ENTJ-A / Ebisu / Hardware-Driven Builder</span>
+    <!-- TOP -->
+    <section class="cover" aria-label="Top">
+      <div class="coverInner">
+        <div class="coverGrid">
+          <div class="nameCard">
+            <div class="nameStack">
+              <div class="nameEn">TAKUMI SAKAGUCHI</div>
+              <div class="nameJa">坂口 拓海</div>
+              <div class="nameTags">Hardware / Robocon / Radio</div>
+            </div>
           </div>
 
-          <h1 class="reveal">
-            坂口拓海<br />
-            <span class="gradText">Sakaguchi Takumi</span>
-          </h1>
-          <div class="titleA reveal">Hardware Control / Embedded OS / Robotics</div>
-
-          <p class="sub reveal">
-            ハードウェア制御・OS組み込み・基礎加工を軸に、ロボティクス領域で「現場で動くもの」を最速で形にします。
-            企画〜実装〜試験のループを短く回し、既に世の中にあるものを組み合わせて新しい価値を見いだすことが得意です。
-          </p>
-
-          <div class="heroBadges reveal">
-            <div class="badge"><span class="mini" aria-hidden="true"></span><span>出身：恵比寿</span></div>
-            <div class="badge"><span class="mini" aria-hidden="true"></span><span>MBTI：ENTJ-A（指揮官）</span></div>
-            <div class="badge"><span class="mini" aria-hidden="true"></span><span>Robocon / NEP / AKATSUKI</span></div>
-          </div>
-
-          <div class="ctaRow reveal">
-            <a class="btn primary magnetic" href="#timeline">
-              <span>Timeline</span>
-              <span class="arrow" aria-hidden="true"></span>
-            </a>
-            <a class="btn magnetic" href="#skills">
-              <span>Skills</span>
-              <span class="arrow" aria-hidden="true"></span>
-            </a>
-            <a class="btn magnetic" href="#contact">
-              <span>Contact</span>
-              <span class="arrow" aria-hidden="true"></span>
-            </a>
+          <div class="photoBlock">
+            <div class="photoLabel"></div>
+            <div class="photoFrame">
+              <img src="neya.png" alt="neya" loading="eager" decoding="async" />
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="side">
-        <div class="sideCard reveal2 tilt">
-          <div class="inner">
-            <div class="sig">
-              <h3>Identity</h3>
-              <span>Profile</span>
-            </div>
-
-            <svg class="signature" viewBox="0 0 840 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Takumi Sakaguchi Signature">
-              <defs>
-                <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="rgba(214,180,106,.95)"/>
-                  <stop offset=".5" stop-color="rgba(34,211,238,.90)"/>
-                  <stop offset="1" stop-color="rgba(124,58,237,.85)"/>
-                </linearGradient>
-                <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-                  <feGaussianBlur stdDeviation="6" result="b"/>
-                  <feColorMatrix in="b" type="matrix"
-                    values="1 0 0 0 0
-                            0 1 0 0 0
-                            0 0 1 0 0
-                            0 0 0 0.75 0" result="c"/>
-                  <feMerge>
-                    <feMergeNode in="c"/>
-                    <feMergeNode in="SourceGraphic"/>
-                  </feMerge>
-                </filter>
-              </defs>
-              <path d="M45 140
-                       C70 80, 115 70, 165 120
-                       C205 160, 260 165, 295 120
-                       C325 85, 370 85, 410 120
-                       C470 172, 545 170, 590 115
-                       C640 55, 705 55, 760 118
-                       C788 145, 810 145, 825 130"
-                    fill="none" stroke="url(#g)" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"
-                    filter="url(#glow)"/>
-              <path d="M110 155
-                       C145 175, 190 175, 230 155"
-                    fill="none" stroke="rgba(255,255,255,.50)" stroke-width="3" stroke-linecap="round"/>
-              <text x="50" y="70" fill="rgba(255,255,255,.82)" font-size="22" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace">
-                TAKUMI SAKAGUCHI
-              </text>
-            </svg>
-
-            <div class="kvList">
-              <div class="kv">
-                <b>NAME</b>
-                <span>坂口拓海（さかぐちたくみ）</span>
-              </div>
-              <div class="kv">
-                <b>FROM</b>
-                <span>恵比寿</span>
-              </div>
-              <div class="kv">
-                <b>MBTI</b>
-                <span>ENTJ-A（指揮官）</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="miniGrid">
-          <div class="sideCard reveal2 tilt">
-            <div class="inner">
-              <div class="sig">
-                <h3>Licenses</h3>
-                <span>資格</span>
-              </div>
-              <ul class="clean" style="margin-top:12px">
-                <li class="li">
-                  <i aria-hidden="true"></i>
-                  <div>
-                    <b>第一級陸上特殊無線技士</b>
-                    <span>無線・通信系の基礎と運用への理解</span>
-                  </div>
-                </li>
-                <li class="li">
-                  <i aria-hidden="true"></i>
-                  <div>
-                    <b>第三級陸上特殊無線技士</b>
-                    <span>現場で扱える実務レベルの免許</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="sideCard reveal2 tilt">
-            <div class="inner">
-              <div class="sig">
-                <h3>Focus</h3>
-                <span>Core</span>
-              </div>
-              <ul class="clean" style="margin-top:12px">
-                <li class="li">
-                  <i aria-hidden="true"></i>
-                  <div>
-                    <b>ハードウェア制御</b>
-                    <span>センサ・アクチュエータ・電装の統合</span>
-                  </div>
-                </li>
-                <li class="li">
-                  <i aria-hidden="true"></i>
-                  <div>
-                    <b>OS組み込みシステム</b>
-                    <span>Ubuntu組み込み / 周辺I/O / 低レイヤ</span>
-                  </div>
-                </li>
-                <li class="li">
-                  <i aria-hidden="true"></i>
-                  <div>
-                    <b>基礎加工</b>
-                    <span>実装に必要な加工・組み立ての基礎</span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
+      <div class="scrollCue" aria-hidden="true">
+        <div>SCROLL</div>
+        <div class="line"></div>
       </div>
     </section>
 
+    <!-- About -->
     <section id="about">
       <div class="sectionHead">
         <div>
@@ -1239,7 +1046,7 @@
       </div>
 
       <div class="grid">
-        <div class="card span-7 reveal2 tilt">
+        <div class="card span-7 reveal2">
           <div class="inner">
             <div class="titleRow">
               <h3>坂口拓海（さかぐちたくみ）</h3>
@@ -1251,7 +1058,7 @@
           </div>
         </div>
 
-        <div class="card span-5 reveal2 tilt">
+        <div class="card span-5 reveal2">
           <div class="inner">
             <div class="titleRow">
               <h3>Quick Facts</h3>
@@ -1286,6 +1093,7 @@
       </div>
     </section>
 
+    <!-- Skills -->
     <section id="skills">
       <div class="sectionHead">
         <div>
@@ -1296,7 +1104,7 @@
       </div>
 
       <div class="grid">
-        <div class="card span-6 reveal2 tilt">
+        <div class="card span-6 reveal2">
           <div class="inner">
             <div class="titleRow">
               <h3>Core Skills</h3>
@@ -1353,7 +1161,7 @@
           </div>
         </div>
 
-        <div class="card span-6 reveal2 tilt">
+        <div class="card span-6 reveal2">
           <div class="inner">
             <div class="titleRow">
               <h3>Licenses</h3>
@@ -1403,6 +1211,7 @@
       </div>
     </section>
 
+    <!-- Timeline -->
     <section id="timeline">
       <div class="sectionHead">
         <div>
@@ -1497,6 +1306,7 @@
       </div>
     </section>
 
+    <!-- Programming -->
     <section id="programming">
       <div class="sectionHead">
         <div>
@@ -1507,7 +1317,7 @@
       </div>
 
       <div class="grid">
-        <div class="card span-6 reveal2 tilt">
+        <div class="card span-6 reveal2">
           <div class="inner">
             <div class="titleRow">
               <h3>マイコン / ボード</h3>
@@ -1546,7 +1356,7 @@
           </div>
         </div>
 
-        <div class="card span-6 reveal2 tilt">
+        <div class="card span-6 reveal2">
           <div class="inner">
             <div class="titleRow">
               <h3>言語 / 実行環境</h3>
@@ -1588,6 +1398,7 @@
       </div>
     </section>
 
+    <!-- Contact -->
     <section id="contact">
       <div class="sectionHead">
         <div>
@@ -1598,7 +1409,7 @@
       </div>
 
       <div class="grid">
-        <div class="card span-12 reveal2 tilt">
+        <div class="card span-12 reveal2">
           <div class="inner">
             <div class="titleRow">
               <h3>SNS</h3>
@@ -1640,7 +1451,7 @@
         <div class="mono">© <span id="y"></span> Takumi Sakaguchi</div>
         <div class="mono muted">Hardware / Embedded / Robotics</div>
       </div>
-      <div class="mono right muted">Black Luxury Motion</div>
+      <div class="mono right muted">Minimal Crafted</div>
     </footer>
   </main>
 
@@ -1663,6 +1474,17 @@
       }
       window.addEventListener("scroll", updateProgress, {passive:true});
       updateProgress();
+
+      // scrollP (0..1) for top fade/shift
+      function updateScrollP(){
+        const y = window.scrollY || 0;
+        const h = Math.max(1, window.innerHeight);
+        const p = Math.min(1, Math.max(0, y / (h * 0.85)));
+        document.documentElement.style.setProperty("--scrollP", String(p));
+      }
+      window.addEventListener("scroll", updateScrollP, {passive:true});
+      window.addEventListener("resize", updateScrollP, {passive:true});
+      updateScrollP();
 
       const c1 = document.querySelector(".cursor");
       const c2 = document.querySelector(".cursor2");
@@ -1759,34 +1581,7 @@
         });
       }
 
-      document.querySelectorAll(".heroCard, .card, .sideCard").forEach(bindLightFollow);
-
-      const tilts = document.querySelectorAll(".tilt");
-      tilts.forEach((card)=>{
-        const maxTilt = 10;
-        let r = null;
-
-        card.addEventListener("mouseenter", ()=>{
-          r = card.getBoundingClientRect();
-          card.style.transition = "transform 120ms ease";
-          setTimeout(()=>{ card.style.transition = "transform 0ms ease"; }, 140);
-        });
-
-        card.addEventListener("mousemove", (e)=>{
-          if (!r) r = card.getBoundingClientRect();
-          const px = (e.clientX - r.left) / r.width;
-          const py = (e.clientY - r.top) / r.height;
-          const rx = (py - 0.5) * -2 * maxTilt;
-          const ry = (px - 0.5) *  2 * maxTilt;
-          card.style.transform = "perspective(900px) rotateX(" + rx + "deg) rotateY(" + ry + "deg) translateY(-1px)";
-        });
-
-        card.addEventListener("mouseleave", ()=>{
-          card.style.transition = "transform 220ms ease";
-          card.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0px)";
-          setTimeout(()=>{ card.style.transition = ""; }, 240);
-        });
-      });
+      document.querySelectorAll(".card").forEach(bindLightFollow);
 
       async function initParticles(){
         if (!window.tsParticles) return;
@@ -1795,7 +1590,7 @@
           fpsLimit: 60,
           fullScreen: { enable: true, zIndex: 0 },
           particles: {
-            number: { value: 60, density: { enable: true, area: 950 } },
+            number: { value: 56, density: { enable: true, area: 950 } },
             color: { value: ["#d6b46a","#22d3ee","#7c3aed","#ffffff"] },
             shape: { type: "circle" },
             opacity: { value: { min: 0.10, max: 0.34 } },
@@ -1865,9 +1660,6 @@
             }
           });
         });
-
-        gsap.fromTo(".heroCard", {opacity:0, y: 20}, {opacity:1, y:0, duration: 1.0, ease:"power3.out", delay: 0.05});
-        gsap.fromTo(".side .sideCard", {opacity:0, y: 18}, {opacity:1, y:0, duration: 1.05, ease:"power3.out", stagger:0.08, delay: 0.12});
 
         document.querySelectorAll(".bar").forEach((bar)=>{
           const fill = bar.querySelector(".fill");
