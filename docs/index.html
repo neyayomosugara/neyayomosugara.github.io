@@ -2,8 +2,9 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="color-scheme" content="dark" />
+  <meta name="theme-color" content="#06070b" />
   <title>坂口拓海 | Portfolio</title>
 
   <meta name="description" content="坂口拓海（さかぐちたくみ）| Hardware / Embedded / Robotics Portfolio" />
@@ -17,9 +18,8 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
 
-  <!-- Person schema (SEO) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,1672 +43,1704 @@
 
   <style>
     :root{
-      --bg0:#05060a;
-      --bg1:#070a12;
-      --bg2:#04050a;
-
-      --txt: rgba(255,255,255,.92);
+      --bg: #05070b;
+      --bg-soft: #0a0f17;
+      --panel: rgba(12,16,24,.68);
+      --panel-2: rgba(255,255,255,.04);
+      --panel-3: rgba(255,255,255,.06);
+      --line: rgba(255,255,255,.10);
+      --line-strong: rgba(255,255,255,.18);
+      --text: rgba(255,255,255,.96);
       --muted: rgba(255,255,255,.70);
-      --muted2: rgba(255,255,255,.52);
+      --muted-2: rgba(255,255,255,.48);
 
-      --glass: rgba(255,255,255,.06);
-      --glass2: rgba(255,255,255,.10);
-      --stroke: rgba(255,255,255,.12);
-      --stroke2: rgba(255,255,255,.22);
+      --gold: #dec387;
+      --ice: #73dfff;
+      --violet: #8a7bff;
+      --rose: #ff7f93;
+      --lime: #7df0bb;
 
-      --a:#7c3aed;
-      --b:#22d3ee;
-      --c:#34d399;
-      --d:#fb7185;
-      --e:#fbbf24;
+      --glow-a: radial-gradient(circle at 15% 20%, rgba(115,223,255,.16), transparent 35%);
+      --glow-b: radial-gradient(circle at 88% 18%, rgba(138,123,255,.14), transparent 32%);
+      --glow-c: radial-gradient(circle at 50% 100%, rgba(222,195,135,.11), transparent 36%);
 
-      --gold:#d6b46a;
-      --gold2:#f4e3b1;
-
-      --shadow: 0 24px 90px rgba(0,0,0,.62);
-      --shadow2: 0 16px 70px rgba(0,0,0,.48);
-
-      --radius-xl: 28px;
+      --radius-xl: 30px;
       --radius-lg: 22px;
       --radius-md: 16px;
       --radius-sm: 12px;
 
-      --max: 1180px;
-      --pad: clamp(16px, 3vw, 34px);
+      --shadow-xl: 0 40px 120px rgba(0,0,0,.55);
+      --shadow-lg: 0 24px 72px rgba(0,0,0,.40);
+      --shadow-md: 0 14px 40px rgba(0,0,0,.28);
 
-      --h1: clamp(42px, 6.4vw, 82px);
-      --h2: clamp(22px, 3vw, 34px);
-      --h3: clamp(18px, 2.2vw, 24px);
-      --p:  clamp(14px, 1.2vw, 16px);
+      --container: min(1240px, calc(100vw - 40px));
+      --header-h: 76px;
 
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: "Noto Sans JP", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      --display: "Space Grotesk", ui-sans-serif, system-ui;
+      --display: "Space Grotesk", "Inter", system-ui, sans-serif;
+      --sans: "Inter", "Noto Sans JP", system-ui, sans-serif;
+      --jp: "Noto Sans JP", "Inter", system-ui, sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
-      --headerH: 64px;
+      --hero-title: clamp(54px, 11vw, 150px);
+      --hero-sub: clamp(18px, 2.1vw, 30px);
+      --h2: clamp(24px, 4vw, 44px);
+      --h3: clamp(18px, 2.2vw, 26px);
+      --body: clamp(14px, 1.35vw, 17px);
 
-      /* Top color like your image */
-      --topBlue: #114c66;
-      --topBlue2:#0f4258;
-      --topInk: #05060a;
+      --scroll: 0;
+      --mx: 50%;
+      --my: 50%;
     }
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
+    *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
+    html,body{ min-height:100%; }
     body{
       margin:0;
-      color:var(--txt);
+      color:var(--text);
+      background:
+        var(--glow-a),
+        var(--glow-b),
+        var(--glow-c),
+        linear-gradient(180deg, #05070b 0%, #080c13 44%, #05070b 100%);
       font-family:var(--sans);
-      background: radial-gradient(1200px 900px at 15% 10%, rgba(124,58,237,.18), transparent 62%),
-                  radial-gradient(1100px 850px at 92% 30%, rgba(34,211,238,.14), transparent 60%),
-                  radial-gradient(900px 700px at 55% 96%, rgba(214,180,106,.10), transparent 62%),
-                  linear-gradient(180deg, var(--bg0), var(--bg1) 62%, var(--bg2));
       overflow-x:hidden;
       -webkit-font-smoothing: antialiased;
       text-rendering: geometricPrecision;
     }
 
-    ::selection{ background: rgba(34,211,238,.28); }
-    :focus-visible{ outline: 2px solid rgba(34,211,238,.55); outline-offset: 3px; border-radius: 10px; }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      z-index:-2;
+      background:
+        linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 68px 68px;
+      mask-image: radial-gradient(circle at 50% 25%, rgba(0,0,0,1), rgba(0,0,0,.2) 55%, transparent 78%);
+      opacity:.28;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:-20%;
+      pointer-events:none;
+      z-index:-1;
+      opacity:.16;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.95' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+      mix-blend-mode:soft-light;
+      animation: grainMove 10s steps(6) infinite;
+    }
+
+    @keyframes grainMove{
+      0%{transform:translate(-2%, -1%)}
+      25%{transform:translate(2%, -2%)}
+      50%{transform:translate(1%, 2%)}
+      75%{transform:translate(-1%, 1%)}
+      100%{transform:translate(-2%, -1%)}
+    }
+
+    ::selection{ background: rgba(115,223,255,.28); }
+    img{ max-width:100%; display:block; }
+    a{ color:inherit; }
+    button, a{ -webkit-tap-highlight-color: transparent; }
+    :focus-visible{ outline:2px solid rgba(115,223,255,.8); outline-offset:3px; }
 
     .skip{
       position:absolute;
-      top:-60px; left:12px;
-      background: rgba(0,0,0,.65);
-      color: var(--txt);
-      border:1px solid rgba(255,255,255,.16);
-      padding:10px 12px;
-      border-radius: 14px;
-      z-index:99999;
-      transition: top .2s ease;
+      left:14px;
+      top:-56px;
+      z-index:9999;
+      padding:10px 14px;
+      border-radius:12px;
+      background:#0d1320;
+      border:1px solid var(--line-strong);
+      color:var(--text);
       text-decoration:none;
-      font-size: 13px;
-      backdrop-filter: blur(10px);
+      transition:top .2s ease;
     }
-    .skip:focus{ top:12px; }
+    .skip:focus{ top:14px; }
 
     .progress{
       position:fixed;
-      top:0; left:0;
+      inset:0 auto auto 0;
       width:100%;
       height:2px;
-      z-index:9999;
-      background: rgba(255,255,255,.06);
-      pointer-events:none;
+      z-index:90;
+      background:rgba(255,255,255,.05);
     }
-    .progressBar{
-      height:100%;
+    .progress > span{
+      display:block;
       width:0%;
-      background: linear-gradient(90deg, rgba(214,180,106,.95), rgba(34,211,238,.85), rgba(124,58,237,.85));
-      box-shadow: 0 0 18px rgba(34,211,238,.22);
-      transform-origin:left center;
+      height:100%;
+      background: linear-gradient(90deg, var(--gold), var(--ice), var(--violet));
+      box-shadow: 0 0 24px rgba(115,223,255,.45);
     }
 
-    .grain{
-      position:fixed; inset:-20%;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");
-      mix-blend-mode:overlay;
-      opacity:.18;
+    .cursor-glow{
+      position:fixed;
+      width:440px;
+      height:440px;
+      border-radius:50%;
       pointer-events:none;
-      transform:translateZ(0);
-      animation: grainMove 10s steps(8) infinite;
-      z-index:1;
-    }
-    @keyframes grainMove{
-      0%{transform:translate(-2%, -2%)}
-      25%{transform:translate(2%, -1%)}
-      50%{transform:translate(1%, 2%)}
-      75%{transform:translate(-1%, 1%)}
-      100%{transform:translate(-2%, -2%)}
-    }
-
-    .gridLines{
-      position:fixed; inset:0;
-      pointer-events:none;
-      z-index:0;
-      opacity:.22;
-      background-image:
-        linear-gradient(to right, rgba(255,255,255,.06) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255,255,255,.05) 1px, transparent 1px);
-      background-size: 72px 72px;
-      mask-image: radial-gradient(700px 560px at 50% 20%, rgba(0,0,0,1), rgba(0,0,0,0));
-      transform: translateZ(0);
-      animation: gridDrift 10s linear infinite;
-    }
-    @keyframes gridDrift{
-      0%{ background-position: 0 0, 0 0; }
-      100%{ background-position: 72px 72px, 72px 72px; }
-    }
-
-    #fx{
-      position:fixed; inset:0;
-      z-index:0;
-      pointer-events:none;
+      left:var(--mx);
+      top:var(--my);
+      transform:translate(-50%,-50%);
+      background: radial-gradient(circle, rgba(115,223,255,.12), rgba(138,123,255,.10), transparent 62%);
+      filter: blur(18px);
+      z-index:-1;
       opacity:.85;
     }
 
-    .cursor{
-      position:fixed;
-      width:22px; height:22px;
-      border-radius:50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.9), rgba(255,255,255,0) 55%);
-      filter: blur(1px);
-      mix-blend-mode:screen;
-      pointer-events:none;
-      z-index:9998;
-      transform:translate(-50%,-50%);
-      opacity:.75;
-    }
-    .cursor2{
-      position:fixed;
-      width:320px; height:320px;
-      border-radius:50%;
-      background: radial-gradient(circle, rgba(214,180,106,.16), rgba(34,211,238,.14), rgba(124,58,237,.12), rgba(0,0,0,0) 62%);
-      filter: blur(18px);
-      mix-blend-mode:screen;
-      pointer-events:none;
-      z-index:9997;
-      transform:translate(-50%,-50%);
-      opacity:.82;
+    .shell{
+      width:var(--container);
+      margin:0 auto;
     }
 
     header{
       position:sticky;
       top:0;
-      z-index:50;
-      height: var(--headerH);
-      display:flex;
-      align-items:center;
-      backdrop-filter: blur(16px);
-      background: linear-gradient(180deg, rgba(8,10,18,.78), rgba(8,10,18,.42));
-      border-bottom:1px solid rgba(255,255,255,.08);
+      z-index:70;
+      height:var(--header-h);
+      backdrop-filter: blur(18px);
+      background: linear-gradient(180deg, rgba(7,10,15,.88), rgba(7,10,15,.42));
+      border-bottom:1px solid rgba(255,255,255,.06);
     }
     .nav{
-      max-width:var(--max);
-      width:100%;
+      width:var(--container);
+      height:100%;
       margin:0 auto;
-      padding: 10px var(--pad);
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:12px;
+      gap:18px;
     }
     .brand{
-      display:flex; align-items:center; gap:10px;
-      text-decoration:none; color:var(--txt);
-      user-select:none;
-      min-width: 220px;
-    }
-    .logo{
-      width:36px; height:36px;
-      border-radius: 14px;
-      background:
-        radial-gradient(14px 14px at 25% 25%, rgba(255,255,255,.85), rgba(255,255,255,0) 70%),
-        linear-gradient(135deg, rgba(214,180,106,.90), rgba(34,211,238,.78), rgba(124,58,237,.78));
-      box-shadow: 0 12px 50px rgba(34,211,238,.16);
-      position:relative;
-      overflow:hidden;
-    }
-    .logo::after{
-      content:"";
-      position:absolute; inset:-55%;
-      background: conic-gradient(from 180deg, rgba(255,255,255,0), rgba(255,255,255,.22), rgba(255,255,255,0));
-      animation: spin 4.8s linear infinite;
-      opacity:.80;
-    }
-    @keyframes spin{ to{ transform:rotate(360deg)} }
-
-    .brandText{
-      display:flex; flex-direction:column; line-height:1.1;
-    }
-    .brandText b{
-      font-size: 13px;
-      letter-spacing:.06em;
-      font-family: var(--display);
-      text-transform: uppercase;
-    }
-    .brandText span{ font-size:12px; color:var(--muted2) }
-
-    nav{
       display:flex;
       align-items:center;
-      gap: 2px;
+      gap:14px;
+      text-decoration:none;
+      min-width:0;
+    }
+    .brand-mark{
+      width:44px;
+      height:44px;
+      border-radius:15px;
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,.95), rgba(255,255,255,0) 42%),
+        linear-gradient(135deg, rgba(222,195,135,.95), rgba(115,223,255,.86), rgba(138,123,255,.82));
+      box-shadow: 0 18px 50px rgba(115,223,255,.18);
+      flex:0 0 auto;
+    }
+    .brand-mark::after{
+      content:"";
+      position:absolute;
+      inset:-60%;
+      background: conic-gradient(from 180deg, transparent, rgba(255,255,255,.28), transparent 35%);
+      animation: spin 5s linear infinite;
+    }
+    @keyframes spin{ to{ transform:rotate(360deg); } }
+
+    .brand-copy{ min-width:0; }
+    .brand-copy strong{
+      display:block;
+      font-family:var(--display);
+      font-size:13px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      white-space:nowrap;
+    }
+    .brand-copy span{
+      display:block;
+      font-size:12px;
+      color:var(--muted-2);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:6px;
       flex-wrap:wrap;
       justify-content:flex-end;
     }
-    nav a{
-      color:var(--muted);
+    .nav-links a,
+    .ghost-btn,
+    .solid-btn,
+    .mini-link{
       text-decoration:none;
+      transition: transform .18s ease, background .25s ease, border-color .25s ease, color .25s ease;
+    }
+    .nav-links a{
       font-size:13px;
-      padding:10px 10px;
-      border-radius:12px;
-      transition: color .25s ease, background .25s ease, transform .18s ease;
+      color:var(--muted);
+      padding:12px 14px;
+      border-radius:999px;
+      border:1px solid transparent;
       position:relative;
-      white-space:nowrap;
     }
-    nav a::after{
-      content:"";
-      position:absolute;
-      left:10px; right:10px;
-      bottom:6px;
-      height:1px;
-      background: linear-gradient(90deg, rgba(214,180,106,0), rgba(214,180,106,.75), rgba(34,211,238,.7), rgba(214,180,106,0));
-      transform: scaleX(0);
-      transform-origin:center;
-      transition: transform .25s ease;
-      opacity:.9;
-    }
-    nav a:hover{
-      color:var(--txt);
-      background: rgba(255,255,255,.06);
-      transform: translateY(-1px);
-    }
-    nav a:hover::after{ transform: scaleX(1); }
-    nav a.active{
-      color: rgba(255,255,255,.92);
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
-    }
-    nav a.active::after{ transform: scaleX(1); }
-
-    .navRight{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      justify-content:flex-end;
+    .nav-links a:hover,
+    .nav-links a.active{
+      color:var(--text);
+      background:rgba(255,255,255,.06);
+      border-color:rgba(255,255,255,.10);
     }
 
-    .pill{
+    .contact-chip{
       display:inline-flex;
       align-items:center;
       gap:10px;
+      padding:12px 16px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.06);
+      box-shadow: var(--shadow-md);
+      color:var(--text);
+      text-decoration:none;
+      font-size:13px;
+      white-space:nowrap;
+    }
+    .contact-chip .dot{
+      width:10px;
+      height:10px;
+      border-radius:999px;
+      background:linear-gradient(135deg, var(--gold), var(--ice), var(--violet));
+      box-shadow: 0 0 0 7px rgba(115,223,255,.09);
+    }
+    .contact-chip:hover{ transform:translateY(-1px); }
+
+    main{ position:relative; }
+    section{
+      width:var(--container);
+      margin:0 auto;
+      padding: 26px 0;
+      scroll-margin-top: calc(var(--header-h) + 20px);
+    }
+
+    .hero{
+      min-height: calc(100svh - var(--header-h));
+      display:grid;
+      align-items:center;
+      padding: 30px 0 46px;
+      position:relative;
+      isolation:isolate;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset: 8% 0 auto auto;
+      width:min(560px, 42vw);
+      height:min(560px, 42vw);
+      border-radius:50%;
+      background: radial-gradient(circle, rgba(222,195,135,.20), rgba(138,123,255,.14), transparent 68%);
+      filter: blur(14px);
+      opacity:.92;
+      z-index:-1;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.18fr .82fr;
+      gap:26px;
+      align-items:stretch;
+    }
+
+    .glass{
+      position:relative;
+      overflow:hidden;
+      border-radius: var(--radius-xl);
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03)) padding-box,
+        linear-gradient(135deg, rgba(255,255,255,.18), rgba(255,255,255,.05)) border-box;
+      box-shadow: var(--shadow-xl);
+      backdrop-filter: blur(18px);
+    }
+    .glass::before{
+      content:"";
+      position:absolute;
+      inset:-1px;
+      background:
+        radial-gradient(500px 240px at 8% 8%, rgba(115,223,255,.16), transparent 58%),
+        radial-gradient(500px 260px at 90% 0%, rgba(138,123,255,.14), transparent 56%),
+        radial-gradient(460px 260px at 50% 100%, rgba(222,195,135,.12), transparent 56%);
+      pointer-events:none;
+      opacity:.9;
+    }
+    .glass::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background: radial-gradient(420px 320px at var(--mx) var(--my), rgba(255,255,255,.10), transparent 60%);
+      opacity:.75;
+      mix-blend-mode:screen;
+    }
+
+    .hero-copy{
+      padding:34px;
+      min-height: 720px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:26px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      width:fit-content;
       padding:10px 14px;
       border-radius:999px;
       border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      box-shadow: 0 14px 48px rgba(0,0,0,.25);
-      color:var(--txt);
-      text-decoration:none;
-      font-size:13px;
-      transition: transform .18s ease, background .25s ease, border-color .25s ease;
-      cursor:pointer;
-      user-select:none;
-      position:relative;
-      overflow:hidden;
-      backdrop-filter: blur(12px);
+      background:rgba(255,255,255,.05);
+      font-family:var(--mono);
+      font-size:12px;
+      color:rgba(255,255,255,.76);
+      letter-spacing:.12em;
+      text-transform:uppercase;
     }
-    .pill:hover{
-      transform: translateY(-1px);
-      border-color: rgba(255,255,255,.18);
-      background: rgba(255,255,255,.08);
-    }
-    .pill .dot{
-      width:10px; height:10px; border-radius:50%;
-      background: linear-gradient(135deg, var(--gold), var(--b), var(--a));
-      box-shadow: 0 0 0 6px rgba(214,180,106,.10);
-    }
-    .pill::after{
-      content:"";
-      position:absolute; inset:-60%;
-      background: conic-gradient(from 120deg, rgba(255,255,255,0), rgba(255,255,255,.18), rgba(255,255,255,0));
-      opacity:.0;
-      transition: opacity .25s ease;
-    }
-    .pill:hover::after{ opacity:.55; animation: spin 3.6s linear infinite }
-
-    main{ position:relative; z-index:2; }
-    section{ max-width:var(--max); margin:0 auto; padding: 18px var(--pad); scroll-margin-top: calc(var(--headerH) + 14px); }
-
-    /* =========================
-       TOP (your screenshot style)
-       ========================= */
-    .cover{
-      position:relative;
-      min-height: 100svh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding: calc(var(--headerH) + 40px) var(--pad) 78px;
-      background:
-        radial-gradient(900px 600px at 20% 30%, rgba(255,255,255,.08), rgba(255,255,255,0) 60%),
-        radial-gradient(900px 600px at 85% 40%, rgba(0,0,0,.22), rgba(0,0,0,0) 60%),
-        linear-gradient(180deg, var(--topBlue), var(--topBlue2));
-      overflow:hidden;
-      isolation:isolate;
-    }
-    .cover::after{
-      content:"";
-      position:absolute; left:0; right:0; bottom:-1px;
-      height: 180px;
-      background: linear-gradient(180deg, rgba(5,6,10,0), rgba(5,6,10,1));
-      z-index:1;
-      pointer-events:none;
+    .eyebrow i{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background: linear-gradient(135deg, var(--gold), var(--ice));
+      box-shadow: 0 0 0 6px rgba(115,223,255,.08);
     }
 
-    .coverInner{
-      width: min(1120px, 100%);
-      position:relative;
-      z-index:2;
-      transform: translateY(calc(var(--scrollP, 0) * -26px));
-      opacity: calc(1 - (var(--scrollP, 0) * 1.25));
-      transition: opacity .05s linear;
-    }
-
-    .coverGrid{
+    .hero-title-wrap{
       display:grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 54px;
-      align-items:center;
+      gap:10px;
     }
-
-    .nameCard{
-      width: min(620px, 100%);
-      aspect-ratio: 4 / 3;
-      background: linear-gradient(180deg, rgba(0,0,0,.92), rgba(0,0,0,.82));
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: 0 30px 90px rgba(0,0,0,.55);
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      text-align:center;
-      padding: 30px 28px;
-      position:relative;
-      overflow:hidden;
+    .hero-kicker{
+      color:var(--muted-2);
+      font-family:var(--display);
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      font-size:13px;
     }
-    .nameCard::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background: radial-gradient(460px 360px at 50% 40%, rgba(255,255,255,.08), rgba(255,255,255,0) 62%);
-      opacity:.75;
-      pointer-events:none;
-    }
-    .nameCard::after{
-      content:"";
-      position:absolute; inset:-60%;
-      background: conic-gradient(from 120deg, rgba(255,255,255,0), rgba(255,255,255,.12), rgba(255,255,255,0));
-      opacity:.22;
-      animation: spin 10s linear infinite;
-      pointer-events:none;
-    }
-
-    .nameStack{
-      position:relative;
-      z-index:2;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap: 18px;
-      transform: translateY(calc(var(--scrollP, 0) * -10px));
-    }
-    .nameEn{
-      font-family: var(--display);
-      font-size: clamp(16px, 1.8vw, 22px);
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.92);
-    }
-    .nameJa{
-      font-size: clamp(16px, 1.7vw, 22px);
-      letter-spacing: .12em;
-      color: rgba(255,255,255,.88);
-    }
-    .nameTags{
-      font-family: var(--mono);
-      font-size: clamp(14px, 1.7vw, 20px);
-      letter-spacing: .06em;
-      color: rgba(255,255,255,.86);
-      opacity:.95;
-    }
-
-    .photoBlock{
-      position:relative;
-      width: 100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      min-height: 320px;
-    }
-    .photoLabel{
-      position:absolute;
-      top: -8px;
-      left: 10px;
-      font-size: 18px;
-      letter-spacing: .12em;
-      color: rgba(255,255,255,.92);
+    .hero-title{
+      margin:0;
+      font-family:var(--display);
+      font-size:var(--hero-title);
+      line-height:.88;
+      letter-spacing:-.05em;
+      text-transform:uppercase;
+      text-wrap:balance;
       text-shadow: 0 18px 50px rgba(0,0,0,.35);
-      opacity: calc(.95 - (var(--scrollP, 0) * .45));
-      transform: translateY(calc(var(--scrollP, 0) * -10px));
-      user-select:none;
     }
-    .photoFrame{
-      width: min(420px, 100%);
-      aspect-ratio: 4 / 5;
-      border-radius: 22px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(0,0,0,.24);
-      box-shadow: 0 30px 90px rgba(0,0,0,.45);
-      overflow:hidden;
+    .hero-title .line{
+      display:block;
+      background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(255,255,255,.72));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+    .hero-title .accent{
+      background: linear-gradient(135deg, #ffffff 10%, var(--gold) 42%, var(--ice) 78%, #ffffff 100%);
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .hero-ja{
+      font-family:var(--jp);
+      font-size:var(--hero-sub);
+      font-weight:700;
+      letter-spacing:.12em;
+      color:rgba(255,255,255,.88);
+    }
+    .hero-lead{
+      max-width: 34ch;
+      margin:0;
+      color:var(--muted);
+      font-size: clamp(15px, 1.6vw, 19px);
+      line-height:1.9;
+    }
+
+    .metrics{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:12px;
+    }
+    .metric{
+      padding:16px 16px 14px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,.09);
+      background: rgba(255,255,255,.04);
+      min-height:100px;
+    }
+    .metric .num{
+      display:block;
+      font-family:var(--display);
+      font-size: clamp(28px, 5vw, 48px);
+      line-height:1;
+      letter-spacing:-.04em;
+      margin-bottom:8px;
+      color:#fff;
+    }
+    .metric .label{
+      display:block;
+      font-size:12px;
+      color:var(--muted-2);
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      font-family:var(--mono);
+      margin-bottom:8px;
+    }
+    .metric p{
+      margin:0;
+      font-size:13px;
+      line-height:1.65;
+      color:var(--muted);
+    }
+
+    .hero-actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      align-items:center;
+    }
+    .solid-btn,
+    .ghost-btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 18px;
+      border-radius:16px;
+      font-size:14px;
+      white-space:nowrap;
+    }
+    .solid-btn{
+      color:#081019;
+      background: linear-gradient(135deg, #fff, var(--gold) 36%, var(--ice) 80%);
+      box-shadow: 0 20px 60px rgba(115,223,255,.20);
+      font-weight:700;
+    }
+    .ghost-btn{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+    }
+    .solid-btn:hover,
+    .ghost-btn:hover,
+    .mini-link:hover{ transform: translateY(-2px); }
+
+    .arrow{
+      width:20px;
+      height:20px;
+      border-radius:10px;
+      background:rgba(0,0,0,.16);
       position:relative;
-      transform: translateY(calc(var(--scrollP, 0) * -16px));
+      flex:0 0 auto;
     }
-    .photoFrame::after{
+    .ghost-btn .arrow{ background:rgba(255,255,255,.08); }
+    .arrow::after{
       content:"";
-      position:absolute; inset:0;
-      background: radial-gradient(420px 320px at 50% 20%, rgba(255,255,255,.10), rgba(255,255,255,0) 65%);
-      pointer-events:none;
-      opacity:.85;
+      position:absolute;
+      left:6px;
+      top:5px;
+      width:7px;
+      height:7px;
+      border-right:2px solid currentColor;
+      border-bottom:2px solid currentColor;
+      transform: rotate(-45deg);
     }
-    .photoFrame img{
+
+    .hero-side{
+      display:grid;
+      grid-template-rows: 1fr auto;
+      gap:18px;
+    }
+    .portrait-card{
+      padding:20px;
+      display:grid;
+      gap:18px;
+      align-content:space-between;
+      min-height:720px;
+    }
+    .portrait-head{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .caption{
+      font-family:var(--mono);
+      font-size:12px;
+      letter-spacing:.12em;
+      color:var(--muted-2);
+      text-transform:uppercase;
+    }
+    .portrait-frame{
+      position:relative;
+      min-height: 520px;
+      border-radius: 26px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background:
+        radial-gradient(circle at 35% 20%, rgba(255,255,255,.12), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.03), 0 28px 70px rgba(0,0,0,.35);
+    }
+    .portrait-frame img{
       width:100%;
       height:100%;
-      object-fit: cover;
-      display:block;
-      transform: scale(1.02);
-      filter: saturate(1.02) contrast(1.05);
+      object-fit:cover;
+      filter: saturate(1.04) contrast(1.04);
+      transform: scale(1.015);
     }
-
-    .scrollCue{
+    .portrait-overlay{
       position:absolute;
-      left:50%;
-      bottom: 26px;
-      transform: translateX(-50%);
-      font-family: var(--mono);
-      font-size: 12px;
-      letter-spacing: .22em;
-      color: rgba(255,255,255,.82);
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap: 10px;
-      opacity: calc(1 - (var(--scrollP, 0) * 1.1));
+      inset:0;
       pointer-events:none;
-      z-index:2;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,0) 20%),
+        linear-gradient(180deg, rgba(0,0,0,0) 50%, rgba(4,5,8,.72) 100%);
     }
-    .scrollCue .line{
-      width: 1px;
-      height: 38px;
-      background: linear-gradient(180deg, rgba(255,255,255,.0), rgba(255,255,255,.85), rgba(255,255,255,0));
-      animation: cue 1.65s ease-in-out infinite;
-      opacity:.95;
-    }
-    @keyframes cue{
-      0%{ transform: translateY(-4px); opacity:.55; }
-      50%{ transform: translateY(6px); opacity:1; }
-      100%{ transform: translateY(-4px); opacity:.55; }
-    }
-
-    @media (max-width: 980px){
-      header{ height:auto; }
-      .brand{ min-width:unset; }
-      .cover{
-        padding: calc(var(--headerH) + 22px) var(--pad) 70px;
-      }
-      .coverGrid{
-        grid-template-columns: 1fr;
-        gap: 22px;
-      }
-      .photoLabel{
-        position:static;
-        margin: 2px 0 8px;
-        align-self:flex-start;
-      }
-      .photoBlock{
-        flex-direction:column;
-        align-items:flex-start;
-        justify-content:flex-start;
-      }
-      .photoFrame{
-        width: min(520px, 100%);
-      }
-      .nameCard{
-        aspect-ratio: 16 / 10;
-      }
-    }
-
-    /* =========================
-       Sections (existing style)
-       ========================= */
-    .sectionHead{
+    .portrait-badges{
+      position:absolute;
+      left:16px;
+      right:16px;
+      bottom:16px;
       display:flex;
-      align-items:flex-end;
+      flex-wrap:wrap;
+      gap:10px;
+      z-index:1;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(6,10,16,.68);
+      backdrop-filter: blur(14px);
+      color:rgba(255,255,255,.86);
+      font-size:12px;
+      letter-spacing:.04em;
+    }
+    .badge i{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:linear-gradient(135deg, var(--gold), var(--ice));
+    }
+
+    .status-card{
+      padding:18px 20px;
+      display:grid;
+      gap:14px;
+    }
+    .status-list{
+      display:grid;
+      gap:10px;
+    }
+    .status-item{
+      display:flex;
       justify-content:space-between;
-      gap:16px;
-      margin: 28px 0 14px;
+      gap:12px;
+      padding:12px 0;
+      border-top:1px solid rgba(255,255,255,.08);
     }
-    .sectionHead h2{
-      margin:0;
-      font-size: var(--h2);
-      letter-spacing:-.01em;
-      font-family: var(--display);
-      text-transform: uppercase;
-      letter-spacing:.08em;
+    .status-item:first-child{ border-top:0; padding-top:0; }
+    .status-item span{
+      color:var(--muted-2);
+      font-size:13px;
+      white-space:nowrap;
     }
-    .sectionHead p{
-      margin:0;
-      color: var(--muted2);
-      font-size: 13px;
-      max-width: 64ch;
+    .status-item strong{
+      font-size:14px;
+      color:rgba(255,255,255,.92);
+      text-align:right;
       line-height:1.6;
     }
-    .chip{
-      font-family: var(--mono);
+
+    .section-head{
+      display:grid;
+      grid-template-columns: 1fr auto;
+      gap:18px;
+      align-items:end;
+      margin-bottom:18px;
+    }
+    .section-mark{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      margin-bottom:10px;
+      font-family:var(--mono);
       font-size:12px;
-      color: rgba(255,255,255,.74);
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.18);
-      backdrop-filter: blur(12px);
+      color:var(--muted-2);
+      letter-spacing:.14em;
+      text-transform:uppercase;
+    }
+    .section-mark i{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:linear-gradient(135deg, var(--gold), var(--ice));
+    }
+    .section-title{
+      margin:0;
+      font-family:var(--display);
+      font-size:var(--h2);
+      line-height:.96;
+      letter-spacing:-.04em;
+      text-transform:uppercase;
+    }
+    .section-desc{
+      margin:10px 0 0;
+      max-width:72ch;
+      color:var(--muted);
+      font-size:15px;
+      line-height:1.8;
+    }
+    .section-chip{
+      align-self:start;
+      display:inline-flex;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.04);
+      color:rgba(255,255,255,.72);
+      font-size:12px;
+      font-family:var(--mono);
+      letter-spacing:.10em;
+      text-transform:uppercase;
       white-space:nowrap;
     }
 
     .grid{
       display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 14px;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap:16px;
     }
+    .span-12{ grid-column: span 12; }
+    .span-8{ grid-column: span 8; }
+    .span-7{ grid-column: span 7; }
+    .span-6{ grid-column: span 6; }
+    .span-5{ grid-column: span 5; }
+    .span-4{ grid-column: span 4; }
 
     .card{
-      border-radius: var(--radius-xl);
-      border: 1px solid transparent;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.055), rgba(255,255,255,.022)) padding-box,
-        linear-gradient(135deg, rgba(214,180,106,.34), rgba(34,211,238,.22), rgba(124,58,237,.22), rgba(255,255,255,.10)) border-box;
-      box-shadow: var(--shadow2);
       position:relative;
       overflow:hidden;
-      transform-style: preserve-3d;
-      isolation:isolate;
+      border-radius: var(--radius-xl);
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(18px);
+      min-height:100%;
     }
     .card::before{
       content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(620px 260px at 10% 20%, rgba(214,180,106,.14), transparent 58%),
-        radial-gradient(620px 260px at 90% 10%, rgba(34,211,238,.12), transparent 60%),
-        radial-gradient(780px 320px at 60% 115%, rgba(124,58,237,.10), transparent 62%);
-      opacity:.88;
-      pointer-events:none;
-      transform:translateZ(0);
-      z-index:0;
-    }
-    .card::after{
-      content:"";
       position:absolute;
       inset:-1px;
-      background: radial-gradient(420px 320px at var(--hx, 50%) var(--hy, 40%), rgba(255,255,255,.14), transparent 60%);
-      opacity:.0;
-      transition: opacity .25s ease;
+      background:
+        radial-gradient(400px 180px at 0% 0%, rgba(115,223,255,.14), transparent 55%),
+        radial-gradient(320px 180px at 100% 0%, rgba(138,123,255,.14), transparent 56%),
+        radial-gradient(360px 220px at 50% 100%, rgba(222,195,135,.11), transparent 58%);
       pointer-events:none;
+      opacity:.95;
+    }
+    .card-inner{
+      position:relative;
       z-index:1;
-      mix-blend-mode: screen;
-    }
-    .card:hover::after{ opacity:.9; }
-    .card > .inner{
-      position:relative;
-      padding: 18px 18px 16px;
-      z-index:2;
-    }
-
-    .span-6{ grid-column: span 6; }
-    .span-5{ grid-column: span 5; }
-    .span-7{ grid-column: span 7; }
-    .span-4{ grid-column: span 4; }
-    .span-8{ grid-column: span 8; }
-    .span-12{ grid-column: span 12; }
-
-    @media (max-width: 980px){
-      .span-6,.span-5,.span-7,.span-4,.span-8{ grid-column: span 12; }
-    }
-
-    .titleRow{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      margin-bottom: 6px;
-    }
-    .titleRow h3{
-      margin:0;
-      font-size: var(--h3);
-      letter-spacing:-.01em;
-      font-family: var(--sans);
-    }
-    .card p{
-      margin:0;
-      color: var(--muted);
-      line-height:1.85;
-      font-size: var(--p);
-    }
-
-    ul.clean{
-      margin: 12px 0 0;
-      padding:0;
-      list-style:none;
+      padding:22px;
       display:grid;
-      gap:10px;
+      gap:16px;
     }
-    .li{
+    .card-top{
       display:flex;
-      gap: 10px;
       align-items:flex-start;
-      padding: 12px 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.16);
-      backdrop-filter: blur(12px);
+      justify-content:space-between;
+      gap:14px;
     }
-    .li i{
-      width:10px; height:10px; border-radius:50%;
-      margin-top: 6px;
-      background: linear-gradient(135deg, var(--gold), var(--b), var(--a));
-      box-shadow: 0 0 0 6px rgba(34,211,238,.08);
-      flex: 0 0 auto;
+    .card-top h3{
+      margin:0;
+      font-size:var(--h3);
+      letter-spacing:-.03em;
     }
-    .li b{
-      font-size: 14px;
-      color: rgba(255,255,255,.90);
-      display:block;
-      margin-bottom: 2px;
-    }
-    .li span{
-      color: rgba(255,255,255,.68);
-      font-size: 13px;
-      line-height:1.6;
-      display:block;
+    .card-top p{
+      margin:0;
+      font-size:14px;
+      color:var(--muted-2);
+      line-height:1.7;
     }
 
-    .bars{
-      margin-top: 12px;
+    .lede{
+      margin:0;
+      color:var(--muted);
+      line-height:1.9;
+      font-size:var(--body);
+    }
+
+    .info-list,
+    .stack-list,
+    .contact-list,
+    .timeline-list,
+    .feature-list{
       display:grid;
       gap:12px;
     }
-    .bar{
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.16);
-      padding: 12px 12px;
-      overflow:hidden;
+    .info-row,
+    .stack-item,
+    .contact-row,
+    .feature-item,
+    .timeline-item{
       position:relative;
-      backdrop-filter: blur(12px);
+      padding:14px 14px 14px 16px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.09);
+      background: rgba(255,255,255,.04);
+      overflow:hidden;
     }
-    .barTop{
+    .info-row::before,
+    .stack-item::before,
+    .contact-row::before,
+    .feature-item::before,
+    .timeline-item::before{
+      content:"";
+      position:absolute;
+      inset:0 auto 0 0;
+      width:2px;
+      background: linear-gradient(180deg, var(--gold), var(--ice), var(--violet));
+      opacity:.85;
+    }
+    .info-row small,
+    .stack-item small,
+    .contact-row small,
+    .feature-item small,
+    .timeline-item small{
+      display:block;
+      font-family:var(--mono);
+      font-size:11px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      color:var(--muted-2);
+      margin-bottom:8px;
+    }
+    .info-row strong,
+    .stack-item strong,
+    .contact-row strong,
+    .feature-item strong,
+    .timeline-item strong{
+      display:block;
+      font-size:15px;
+      line-height:1.6;
+      color:rgba(255,255,255,.94);
+      margin-bottom:4px;
+    }
+    .info-row span,
+    .stack-item span,
+    .contact-row span,
+    .feature-item span,
+    .timeline-item span{
+      display:block;
+      font-size:13px;
+      line-height:1.7;
+      color:var(--muted);
+    }
+
+    .highlight-grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:12px;
+    }
+    .highlight-card{
+      padding:18px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      min-height: 220px;
       display:flex;
-      align-items:center;
+      flex-direction:column;
       justify-content:space-between;
-      gap:10px;
-      margin-bottom: 8px;
+      gap:18px;
+      box-shadow: var(--shadow-md);
     }
-    .barTop b{
-      font-size: 14px;
-      color: rgba(255,255,255,.90);
+    .highlight-card .year{
+      display:inline-flex;
+      width:fit-content;
+      padding:8px 10px;
+      border-radius:999px;
+      font-family:var(--mono);
+      font-size:11px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      color:rgba(255,255,255,.84);
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
     }
-    .barTop span{
-      font-family: var(--mono);
-      font-size: 12px;
-      color: rgba(255,255,255,.62);
+    .highlight-card h3{
+      margin:0;
+      font-size:20px;
+      line-height:1.3;
+      letter-spacing:-.03em;
+    }
+    .highlight-card p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.75;
+    }
+
+    .skill-bars{ display:grid; gap:12px; }
+    .skill-bar{
+      padding:14px 14px 12px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.09);
+      background: rgba(255,255,255,.04);
+    }
+    .skill-bar-top{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:baseline;
+      margin-bottom:10px;
+    }
+    .skill-bar-top strong{
+      font-size:14px;
+      color:rgba(255,255,255,.92);
+    }
+    .skill-bar-top span{
+      font-family:var(--mono);
+      font-size:12px;
+      color:var(--muted-2);
     }
     .track{
+      position:relative;
       width:100%;
       height:10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.10);
+      border-radius:999px;
       overflow:hidden;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.08);
     }
     .fill{
       height:100%;
-      width:0%;
-      border-radius: 999px;
-      background: linear-gradient(90deg, rgba(214,180,106,.95), rgba(34,211,238,.85), rgba(124,58,237,.85));
-      box-shadow: 0 18px 40px rgba(34,211,238,.12);
-    }
-    .spark{
-      position:absolute;
-      inset:-40%;
-      background: conic-gradient(from 180deg, rgba(255,255,255,0), rgba(255,255,255,.18), rgba(255,255,255,0));
-      opacity:0;
-      pointer-events:none;
-    }
-    .bar:hover .spark{
-      opacity:.6;
-      animation: spin 3.8s linear infinite;
+      width:0;
+      border-radius:999px;
+      background: linear-gradient(90deg, var(--gold), var(--ice), var(--violet));
+      box-shadow: 0 8px 20px rgba(115,223,255,.18);
     }
 
-    .timeline{
-      margin-top: 12px;
-      display:grid;
-      gap: 14px;
-    }
-    .tlGroup{
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.14);
-      backdrop-filter: blur(12px);
+    .timeline-block{ display:grid; gap:14px; }
+    .timeline-year{
+      border-radius:24px;
+      border:1px solid rgba(255,255,255,.10);
       overflow:hidden;
-      position:relative;
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
     }
-    .tlHead{
+    .timeline-year-head{
       display:flex;
-      align-items:center;
       justify-content:space-between;
       gap:12px;
-      padding: 14px 14px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0));
+      align-items:center;
+      padding:16px 18px;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
     }
-    .tlHead b{
-      font-size: 14px;
-      letter-spacing:.06em;
-      text-transform: uppercase;
-      font-family: var(--display);
-      color: rgba(255,255,255,.88);
+    .timeline-year-head strong{
+      font-family:var(--display);
+      font-size:20px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
     }
-    .tlHead span{
-      font-family: var(--mono);
-      font-size: 12px;
-      color: rgba(255,255,255,.62);
+    .timeline-year-head span{
+      font-family:var(--mono);
+      font-size:12px;
+      color:var(--muted-2);
+      text-transform:uppercase;
+      letter-spacing:.10em;
     }
-    .tlBody{
-      padding: 12px 14px 14px;
+    .timeline-year-body{
+      padding:16px 18px 18px;
       display:grid;
-      gap:10px;
-    }
-    .event{
-      display:flex;
-      gap: 10px;
-      align-items:flex-start;
-      padding: 12px 12px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.04);
-      position:relative;
-      overflow:hidden;
-    }
-    .event::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(420px 200px at 12% 30%, rgba(214,180,106,.10), transparent 58%),
-        radial-gradient(420px 200px at 88% 20%, rgba(34,211,238,.10), transparent 62%);
-      opacity:.90;
-      pointer-events:none;
-    }
-    .event i{
-      width:10px;height:10px;border-radius:50%;
-      margin-top: 6px;
-      background: linear-gradient(135deg, var(--gold2), var(--d));
-      box-shadow: 0 0 0 6px rgba(214,180,106,.10);
-      flex: 0 0 auto;
-      position:relative;
-      z-index:1;
-    }
-    .event div{ position:relative; z-index:1 }
-    .event b{
-      display:block;
-      font-size: 14px;
-      color: rgba(255,255,255,.92);
-      margin-bottom: 2px;
-      line-height:1.55;
-    }
-    .event span{
-      display:block;
-      font-size: 13px;
-      color: rgba(255,255,255,.70);
-      line-height:1.65;
-    }
-
-    .socialRow{
-      display:flex;
-      flex-wrap:wrap;
       gap:12px;
-      margin-top: 14px;
-      align-items:center;
-    }
-    .handle{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.18);
-      color: rgba(255,255,255,.84);
-      font-size: 13px;
-      backdrop-filter: blur(12px);
-    }
-    .handle .mark{
-      width:10px; height:10px; border-radius:50%;
-      background: linear-gradient(135deg, var(--gold), var(--b));
-      box-shadow: 0 0 0 6px rgba(34,211,238,.08);
     }
 
-    .btn{
+    .stack-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap:12px;
+    }
+
+    .mini-link{
       display:inline-flex;
       align-items:center;
-      justify-content:center;
       gap:10px;
-      padding: 12px 14px;
-      border-radius: 16px;
+      width:fit-content;
+      padding:12px 14px;
+      border-radius:16px;
       border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.06);
-      color:var(--txt);
-      text-decoration:none;
-      font-size: 14px;
-      transition: transform .18s ease, background .25s ease, border-color .25s ease, box-shadow .25s ease;
-      user-select:none;
-      position:relative;
-      overflow:hidden;
-      backdrop-filter: blur(12px);
+      color:var(--text);
     }
-    .btn::before{
-      content:"";
-      position:absolute; inset:-60% -30%;
-      background: linear-gradient(120deg, rgba(255,255,255,0), rgba(255,255,255,.18), rgba(255,255,255,0));
-      transform: translateX(-60%);
-      transition: transform .55s ease;
-      opacity:.55;
+
+    .social-grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:16px;
     }
-    .btn:hover::before{ transform: translateX(60%); }
-    .btn:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.08);
-      border-color: rgba(255,255,255,.18);
-      box-shadow: 0 18px 55px rgba(0,0,0,.28);
+    .social-handle{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:18px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
     }
-    .btn .arrow{
-      width:18px;height:18px; display:inline-block;
-      border-radius: 8px;
-      background: rgba(0,0,0,.24);
-      border: 1px solid rgba(255,255,255,.14);
-      position:relative;
+    .social-handle .mark{
+      width:14px;
+      height:14px;
+      border-radius:999px;
+      background: linear-gradient(135deg, var(--gold), var(--ice), var(--rose));
+      box-shadow: 0 0 0 10px rgba(115,223,255,.07);
+      flex:0 0 auto;
     }
-    .btn .arrow::after{
-      content:"";
-      position:absolute;
-      left:6px; top:5px;
-      width:6px; height:6px;
-      border-right:2px solid rgba(255,255,255,.9);
-      border-bottom:2px solid rgba(255,255,255,.9);
-      transform: rotate(-45deg);
+    .social-handle strong{
+      display:block;
+      font-size:15px;
+      margin-bottom:5px;
+    }
+    .social-handle span{
+      display:block;
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.7;
     }
 
     footer{
-      max-width:var(--max);
-      margin:0 auto;
-      padding: 24px var(--pad) 46px;
-      color: rgba(255,255,255,.55);
-      font-size: 12px;
+      width:var(--container);
+      margin: 0 auto;
+      padding: 26px 0 46px;
       display:flex;
-      align-items:center;
       justify-content:space-between;
-      gap:12px;
+      gap:16px;
+      align-items:flex-end;
+      color:var(--muted-2);
+      border-top:1px solid rgba(255,255,255,.08);
+      font-size:12px;
     }
     footer .left{
-      display:flex;
-      flex-direction:column;
+      display:grid;
       gap:6px;
     }
-    .sep{
-      height:1px;
-      background: rgba(255,255,255,.10);
-      max-width:var(--max);
-      margin: 12px auto 0;
+
+    .reveal{
+      opacity:0;
+      transform: translateY(20px) scale(.985);
+      transition: opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1);
+    }
+    .reveal.show{
+      opacity:1;
+      transform: translateY(0) scale(1);
     }
 
-    .reveal{ opacity:0; transform: translateY(14px); }
-    .reveal2{ opacity:0; transform: translateY(18px) scale(.99); }
+    @media (max-width: 1100px){
+      .hero-grid,
+      .social-grid{
+        grid-template-columns: 1fr;
+      }
+      .hero-copy,
+      .portrait-card{ min-height:auto; }
+      .portrait-frame{ min-height: 460px; }
+      .highlight-grid{ grid-template-columns: 1fr; }
+      .stack-grid{ grid-template-columns: 1fr; }
+    }
 
-    .muted{ color: var(--muted2) }
-    .mono{ font-family: var(--mono) }
-    .right{ text-align:right }
+    @media (max-width: 900px){
+      .span-8,
+      .span-7,
+      .span-6,
+      .span-5,
+      .span-4{ grid-column: span 12; }
+      .nav{ gap:12px; }
+      .nav-links{ display:none; }
+      .metrics{ grid-template-columns: 1fr; }
+      .hero-copy{ padding:22px; }
+      .portrait-card{ padding:18px; }
+      .section-head{ grid-template-columns: 1fr; }
+      .highlight-card{ min-height:unset; }
+    }
+
+    @media (max-width: 640px){
+      :root{ --container: min(100vw - 24px, 1240px); }
+      header{ height:68px; }
+      .brand-copy span{ display:none; }
+      .contact-chip span:last-child{ display:none; }
+      section{ padding: 18px 0; }
+      .hero{ padding-top: 18px; }
+      .hero-title{ line-height:.92; }
+      .portrait-frame{ min-height: 360px; }
+      footer{ flex-direction:column; align-items:flex-start; }
+    }
 
     @media (prefers-reduced-motion: reduce){
-      .grain, .logo::after, .pill:hover::after, .bar:hover .spark, .gridLines, .scrollCue .line{ animation:none !important }
-      *{ scroll-behavior:auto !important }
+      html{ scroll-behavior:auto; }
+      *, *::before, *::after{ animation:none !important; transition:none !important; }
+      .reveal{ opacity:1; transform:none; }
+      body::after{ animation:none !important; }
     }
   </style>
 </head>
-
 <body>
   <a class="skip" href="#about">本文へ移動</a>
-
-  <div class="progress" aria-hidden="true"><div class="progressBar" aria-hidden="true"></div></div>
-
-  <div id="fx"></div>
-  <div class="gridLines" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
-  <div class="cursor" aria-hidden="true"></div>
-  <div class="cursor2" aria-hidden="true"></div>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
 
   <header>
     <div class="nav">
-      <a class="brand magnetic" href="#top" aria-label="トップへ">
-        <div class="logo" aria-hidden="true"></div>
-        <div class="brandText">
-          <b>Takumi Sakaguchi</b>
-          <span>Hardware / Embedded / Robotics</span>
+      <a class="brand" href="#top" aria-label="トップへ">
+        <div class="brand-mark" aria-hidden="true"></div>
+        <div class="brand-copy">
+          <strong>Takumi Sakaguchi</strong>
+          <span>Hardware / Embedded / Robotics Portfolio</span>
         </div>
       </a>
 
-      <div class="navRight">
-        <nav aria-label="ページ内ナビゲーション">
-          <a class="magnetic" href="#about">About</a>
-          <a class="magnetic" href="#skills">Skills</a>
-          <a class="magnetic" href="#timeline">Timeline</a>
-          <a class="magnetic" href="#programming">Programming</a>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <nav class="nav-links" aria-label="ページ内ナビゲーション">
+          <a href="#about">About</a>
+          <a href="#highlights">Highlights</a>
+          <a href="#skills">Skills</a>
+          <a href="#timeline">Timeline</a>
+          <a href="#stack">Programming</a>
+          <a href="#contact">Contact</a>
         </nav>
-        <a class="pill magnetic" href="#contact" role="button">
+        <a class="contact-chip" href="#contact">
           <span class="dot" aria-hidden="true"></span>
-          <span>Contact</span>
+          <span>Get in touch</span>
         </a>
       </div>
     </div>
   </header>
 
   <main id="top">
-    <!-- TOP -->
-    <section class="cover" aria-label="Top">
-      <div class="coverInner">
-        <div class="coverGrid">
-          <div class="nameCard">
-            <div class="nameStack">
-              <div class="nameEn">TAKUMI SAKAGUCHI</div>
-              <div class="nameJa">坂口 拓海</div>
-              <div class="nameTags">Hardware / Robocon / Radio</div>
+    <section class="hero">
+      <div class="hero-grid">
+        <article class="glass hero-copy reveal" data-tilt>
+          <div style="display:grid; gap:24px;">
+            <div class="eyebrow"><i aria-hidden="true"></i> Portfolio / Hardware / KOSEN</div>
+
+            <div class="hero-title-wrap">
+              <div class="hero-kicker">Leader of Build / Orchestrator of Execution</div>
+              <h1 class="hero-title" aria-label="Takumi Sakaguchi">
+                <span class="line">TAKUMI</span>
+                <span class="line accent">SAKAGUCHI</span>
+              </h1>
+              <div class="hero-ja">坂口 拓海</div>
+            </div>
+
+
+          </div>
+
+          <div class="metrics">
+            <div class="metric">
+              <span class="num">2025</span>
+              <span class="label">Major Year</span>
+              <p>AKATUKI、ロボコン全国、NEDO NEPなど、成果が集中した年。</p>
+            </div>
+            <div class="metric">
+              <span class="num">99%</span>
+              <span class="label">Hardware Control</span>
+              <p>制御・統合・現場最適化を最も強い主戦場に設定。</p>
+            </div>
+            <div class="metric">
+              <span class="num">Lead</span>
+              <span class="label">Role</span>
+              <p>実装だけではなく、方針決定と推進にも強み。</p>
             </div>
           </div>
 
-          <div class="photoBlock">
-            <div class="photoLabel"></div>
-            <div class="photoFrame">
-              <img src="neya.png" alt="neya" loading="eager" decoding="async" />
-            </div>
+          <div class="hero-actions">
+            <a class="solid-btn" href="#highlights">
+              <span>実績を見る</span>
+              <span class="arrow" aria-hidden="true"></span>
+            </a>
+            <a class="ghost-btn" href="#contact">
+              <span>連絡先へ</span>
+              <span class="arrow" aria-hidden="true"></span>
+            </a>
           </div>
+        </article>
+
+        <div class="hero-side">
+          <article class="glass portrait-card reveal">
+            <div class="portrait-head">
+              <div>
+                <div class="caption">Visual Identity</div>
+                <h2 style="margin:8px 0 0; font-size:26px; letter-spacing:-.04em;">Build with command, ship with precision.</h2>
+              </div>
+              <div class="section-chip">Profile</div>
+            </div>
+
+            <div class="portrait-frame">
+              <img src="neya.png" alt="坂口拓海のポートレート" loading="eager" decoding="async" onerror="this.style.display='none'; this.parentElement.style.background='radial-gradient(circle at 30% 20%, rgba(255,255,255,.12), transparent 30%), linear-gradient(135deg, rgba(222,195,135,.22), rgba(115,223,255,.18), rgba(138,123,255,.18))';">
+              <div class="portrait-overlay"></div>
+              <div class="portrait-badges">
+                <div class="badge"><i aria-hidden="true"></i> Hardware Control</div>
+                <div class="badge"><i aria-hidden="true"></i> Embedded Systems</div>
+                <div class="badge"><i aria-hidden="true"></i> Robotics Lead</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="glass status-card reveal">
+            <div class="card-top">
+              <div>
+                <h3>Current Signature</h3>
+              </div>
+              <div class="section-chip">Core</div>
+            </div>
+            <div class="status-list">
+              <div class="status-item">
+                <span>Positioning</span>
+                <strong>Hardware / Embedded / Robotics</strong>
+              </div>
+              <div class="status-item">
+                <span>Strength</span>
+                <strong>作ることと、作らせることの両立</strong>
+              </div>
+              <div class="status-item">
+                <span>Approach</span>
+                <strong>短サイクル検証 / 現場最適 / 壊れにくい設計</strong>
+              </div>
+            </div>
+          </article>
         </div>
-      </div>
-
-      <div class="scrollCue" aria-hidden="true">
-        <div>SCROLL</div>
-        <div class="line"></div>
       </div>
     </section>
 
-    <!-- About -->
     <section id="about">
-      <div class="sectionHead">
+      <div class="section-head reveal">
         <div>
-          <h2 class="reveal">About</h2>
-          <p class="reveal">基本情報</p>
+          <div class="section-mark"><i aria-hidden="true"></i> About</div>
+          <h2 class="section-title">Profile & Positioning</h2>
         </div>
-        <div class="chip reveal">PROFILE</div>
+        <div class="section-chip">Profile</div>
       </div>
 
       <div class="grid">
-        <div class="card span-7 reveal2">
-          <div class="inner">
-            <div class="titleRow">
-              <h3>坂口拓海（さかぐちたくみ）</h3>
-              <div class="chip">Ebisu / ENTJ-A</div>
+        <article class="card span-7 reveal">
+          <div class="card-inner">
+            <div class="card-top">
+              <div>
+                <h3>坂口拓海（さかぐちたくみ）</h3>
+                <p>Leader / Hardware Oriented Builder</p>
+              </div>
+              <div class="section-chip">Ebisu / ENTJ-A</div>
             </div>
-            <p>
-              開発するだけではなく、開発する指揮をとるのが得意です。持ち前のリーダーシップと決断力により、日々新しい価値を見いだします。
+            <p class="lede">
+              持ち前のリーダーシップと決断力を活かし、開発を前進させる指揮を執るのが得意です。
+              アイデアを単なる構想で終わらせず、実装・検証・改善まで落とし込む実行力に重きを置いています。
             </p>
-          </div>
-        </div>
-
-        <div class="card span-5 reveal2">
-          <div class="inner">
-            <div class="titleRow">
-              <h3>Quick Facts</h3>
-              <div class="chip">DATA</div>
+            <div class="feature-list">
+              <div class="feature-item">
+                <small>Leadership</small>
+                <strong>技術判断と推進を同時に持つ</strong>
+                <span>誰かの指示を待つより、自分で構図を作って前に進めるタイプ。</span>
+              </div>
+              <div class="feature-item">
+                <small>Execution</small>
+                <strong>現場に強い実装へ落とす</strong>
+                <span>机上の理想ではなく、壊れにくく直しやすいものを優先します。</span>
+              </div>
             </div>
-            <ul class="clean">
-              <li class="li">
-                <i aria-hidden="true"></i>
-                <div>
-                  <b>出身</b>
-                  <span>恵比寿</span>
-                </div>
-              </li>
-              <li class="li">
-                <i aria-hidden="true"></i>
-                <div>
-                  <b>MBTI</b>
-                  <span>ENTJ-A（指揮官）</span>
-                </div>
-              </li>
-              <li class="li">
-                <i aria-hidden="true"></i>
-                <div>
-                  <b>得意領域</b>
-                  <span>Hardware Control / Embedded OS / Robotics</span>
-                </div>
-              </li>
-            </ul>
           </div>
-        </div>
+        </article>
 
+        <article class="card span-5 reveal">
+          <div class="card-inner">
+            <div class="card-top">
+              <div>
+                <h3>Quick Facts</h3>
+                <p>基本情報</p>
+              </div>
+              <div class="section-chip">Data</div>
+            </div>
+            <div class="info-list">
+              <div class="info-row">
+                <small>Origin</small>
+                <strong>恵比寿</strong>
+                <span>都市的な感性と現場感覚の両方を活かすスタイル。</span>
+              </div>
+              <div class="info-row">
+                <small>MBTI</small>
+                <strong>ENTJ-A（指揮官）</strong>
+                <span>方針決定、意思伝達、役割整理に強い特性。</span>
+              </div>
+              <div class="info-row">
+                <small>Domain</small>
+                <strong>Hardware Control / Embedded OS / Robotics</strong>
+                <span>制御・組み込み・ロボット実装を主軸に展開。</span>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- Skills -->
+    <section id="highlights">
+      <div class="section-head reveal">
+        <div>
+          <div class="section-mark"><i aria-hidden="true"></i> Highlights</div>
+          <h2 class="section-title">Selected Achievements</h2>
+          <p class="section-desc">
+            2025年を中心に、リーダーとしての実績が視認しやすいよう再構成。
+            「何をしたか」よりも、「どの役割で、どの強度で関わったか」が伝わる見せ方にしています。
+          </p>
+        </div>
+        <div class="section-chip">Impact</div>
+      </div>
+
+      <div class="highlight-grid reveal">
+        <article class="highlight-card">
+          <div class="year">2025 / Leader</div>
+          <div>
+            <h3>経済産業省 AKATUKIプロジェクト 採択</h3>
+            <p>次世代無線給電技術の開発でリーダーを担当。技術面だけでなく、意思決定の中心としてプロジェクトを牽引。</p>
+          </div>
+        </article>
+        <article class="highlight-card">
+          <div class="year">2025 / Robocon</div>
+          <div>
+            <h3>高専ロボコン中国大会 デザイン賞 / 全国出場</h3>
+            <p>Aリーダーとしてプロジェクト「厳島」を推進。造形だけでなく、全体完成度をまとめ上げる役割が強い。</p>
+          </div>
+        </article>
+        <article class="highlight-card">
+          <div class="year">2025 / Hardware Lead</div>
+          <div>
+            <h3>NEDO NEP ハードウェアリーダー</h3>
+            <p>ハードウェア側の意思決定と実装を主導。設計・判断・実装の3点を一貫して担当。</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
     <section id="skills">
-      <div class="sectionHead">
+      <div class="section-head reveal">
         <div>
-          <h2 class="reveal">Skills</h2>
-          <p class="reveal">保有スキル</p>
+          <div class="section-mark"><i aria-hidden="true"></i> Skills</div>
+          <h2 class="section-title">Capability Map</h2>
+          <p class="section-desc">
+            単なるスキル一覧ではなく、どの領域にどれだけ自信があるかを視覚的に整理。
+            ポートフォリオ全体の主軸が「ハード・組み込み・無線」であることが一目でわかる構成です。
+          </p>
         </div>
-        <div class="chip reveal">CAPABILITY</div>
+        <div class="section-chip">Capability</div>
       </div>
 
       <div class="grid">
-        <div class="card span-6 reveal2">
-          <div class="inner">
-            <div class="titleRow">
-              <h3>Core Skills</h3>
-              <div class="chip">H/W & Embedded</div>
+        <article class="card span-7 reveal">
+          <div class="card-inner">
+            <div class="card-top">
+              <div>
+                <h3>Core Skills</h3>
+                <p>主戦場の強度</p>
+              </div>
+              <div class="section-chip">H/W & Embedded</div>
             </div>
-
-            <div class="bars">
-              <div class="bar" data-fill="99">
-                <div class="spark" aria-hidden="true"></div>
-                <div class="barTop">
-                  <b>ハードウェア制御</b>
-                  <span>99%</span>
-                </div>
+            <div class="skill-bars">
+              <div class="skill-bar" data-fill="99">
+                <div class="skill-bar-top"><strong>ハードウェア制御</strong><span>99%</span></div>
                 <div class="track"><div class="fill"></div></div>
               </div>
-
-              <div class="bar" data-fill="90">
-                <div class="spark" aria-hidden="true"></div>
-                <div class="barTop">
-                  <b>OS組み込みシステム</b>
-                  <span>90%</span>
-                </div>
+              <div class="skill-bar" data-fill="90">
+                <div class="skill-bar-top"><strong>OS組み込みシステム</strong><span>90%</span></div>
                 <div class="track"><div class="fill"></div></div>
               </div>
-
-              <div class="bar" data-fill="50">
-                <div class="spark" aria-hidden="true"></div>
-                <div class="barTop">
-                  <b>基礎加工</b>
-                  <span>50%</span>
-                </div>
+              <div class="skill-bar" data-fill="80">
+                <div class="skill-bar-top"><strong>無線</strong><span>80%</span></div>
                 <div class="track"><div class="fill"></div></div>
               </div>
-
-              <div class="bar" data-fill="80">
-                <div class="spark" aria-hidden="true"></div>
-                <div class="barTop">
-                  <b>無線</b>
-                  <span>80%</span>
-                </div>
+              <div class="skill-bar" data-fill="50">
+                <div class="skill-bar-top"><strong>基礎加工</strong><span>50%</span></div>
                 <div class="track"><div class="fill"></div></div>
               </div>
-
-              <div class="bar" data-fill="40">
-                <div class="spark" aria-hidden="true"></div>
-                <div class="barTop">
-                  <b>ネットワーク</b>
-                  <span>40%</span>
-                </div>
+              <div class="skill-bar" data-fill="40">
+                <div class="skill-bar-top"><strong>ネットワーク</strong><span>40%</span></div>
                 <div class="track"><div class="fill"></div></div>
               </div>
             </div>
-
           </div>
-        </div>
+        </article>
 
-        <div class="card span-6 reveal2">
-          <div class="inner">
-            <div class="titleRow">
-              <h3>Licenses</h3>
-              <div class="chip">資格</div>
+        <article class="card span-5 reveal">
+          <div class="card-inner">
+            <div class="card-top">
+              <div>
+                <h3>Licenses & Work Style</h3>
+                <p>資格と働き方</p>
+              </div>
+              <div class="section-chip">Field Ready</div>
             </div>
-
-            <ul class="clean">
-              <li class="li">
-                <i aria-hidden="true"></i>
-                <div>
-                  <b>第一級陸上特殊無線技士</b>
-                  <span>制度理解と安全運用、無線系の基礎知識</span>
-                </div>
-              </li>
-              <li class="li">
-                <i aria-hidden="true"></i>
-                <div>
-                  <b>第三陸上級特殊無線技士</b>
-                  <span>現場運用に必要な免許・手続きへの理解</span>
-                </div>
-              </li>
-            </ul>
-
-            <div class="titleRow" style="margin-top:14px">
-              <h3>Work Style</h3>
-              <div class="chip">STYLE</div>
+            <div class="info-list">
+              <div class="info-row">
+                <small>License</small>
+                <strong>第一級陸上特殊無線技士</strong>
+                <span>制度理解と安全運用、無線系の基礎知識を保持。</span>
+              </div>
+              <div class="info-row">
+                <small>License</small>
+                <strong>第三陸上級特殊無線技士</strong>
+                <span>現場運用に必要な免許・手続きへの理解。</span>
+              </div>
+              <div class="info-row">
+                <small>Work Style</small>
+                <strong>短サイクル検証 / 現場最適</strong>
+                <span>試作→測定→改善を高速で回し、壊れにくく直しやすい設計を優先。</span>
+              </div>
             </div>
-            <ul class="clean">
-              <li class="li">
-                <i aria-hidden="true"></i>
-                <div>
-                  <b>短サイクル検証</b>
-                  <span>試作→測定→改善を高速で回す</span>
-                </div>
-              </li>
-              <li class="li">
-                <i aria-hidden="true"></i>
-                <div>
-                  <b>現場最適</b>
-                  <span>壊れにくい・直しやすい設計を優先</span>
-                </div>
-              </li>
-            </ul>
-
           </div>
-        </div>
+        </article>
       </div>
     </section>
 
-    <!-- Timeline -->
     <section id="timeline">
-      <div class="sectionHead">
+      <div class="section-head reveal">
         <div>
-          <h2 class="reveal">Timeline</h2>
-          <p class="reveal">経歴</p>
+          <div class="section-mark"><i aria-hidden="true"></i> Timeline</div>
+          <h2 class="section-title">History / Leadership Trace</h2>
         </div>
-        <div class="chip reveal">HISTORY</div>
+        <div class="section-chip">History</div>
       </div>
 
       <div class="grid">
-        <div class="card span-12 reveal2">
-          <div class="inner">
-            <div class="titleRow">
-              <h3>高専</h3>
-              <div class="chip">KOSEN</div>
+        <article class="card span-8 reveal">
+          <div class="card-inner">
+            <div class="card-top">
+              <div>
+                <h3>高専</h3>
+                <p>KOSEN Track</p>
+              </div>
+              <div class="section-chip">KOSEN</div>
             </div>
 
-            <div class="timeline">
-              <div class="tlGroup reveal2">
-                <div class="tlHead">
-                  <b>2025</b>
+            <div class="timeline-block">
+              <div class="timeline-year">
+                <div class="timeline-year-head">
+                  <strong>2025</strong>
                   <span>Leadership & Awards</span>
                 </div>
-                <div class="tlBody">
-                  <div class="event">
-                    <i aria-hidden="true"></i>
-                    <div>
-                      <b>経済産業省 AKATUKIプロジェクト 採択（リーダー）</b>
-                      <span>次世代無線給電技術の開発</span>
-                    </div>
+                <div class="timeline-year-body">
+                  <div class="timeline-item">
+                    <small>METI / Project Lead</small>
+                    <strong>経済産業省 AKATUKIプロジェクト 採択（リーダー）</strong>
+                    <span>次世代無線給電技術の開発をリーダーとして推進。</span>
                   </div>
-                  <div class="event">
-                    <i aria-hidden="true"></i>
-                    <div>
-                      <b>高専ロボコン2025 中国大会 デザイン賞 / 全国出場（Aリーダー）</b>
-                      <span>プロジェクト名「厳島」</span>
-                    </div>
+                  <div class="timeline-item">
+                    <small>Robocon / A Leader</small>
+                    <strong>高専ロボコン2025 中国大会 デザイン賞 / 全国出場</strong>
+                    <span>プロジェクト名「厳島」。Aリーダーとして企画・実装を牽引。</span>
                   </div>
-                  <div class="event">
-                    <i aria-hidden="true"></i>
-                    <div>
-                      <b>NEDO NEP（ハードウェアリーダー）</b>
-                      <span>ハードウェア側の意思決定と実装を主導</span>
-                    </div>
+                  <div class="timeline-item">
+                    <small>NEDO / Hardware Lead</small>
+                    <strong>NEDO NEP（ハードウェアリーダー）</strong>
+                    <span>ハードウェア側の意思決定と実装を主導。</span>
                   </div>
                 </div>
               </div>
 
-              <div class="tlGroup reveal2">
-                <div class="tlHead">
-                  <b>2024</b>
+              <div class="timeline-year">
+                <div class="timeline-year-head">
+                  <strong>2024</strong>
                   <span>Team Lead</span>
                 </div>
-                <div class="tlBody">
-                  <div class="event">
-                    <i aria-hidden="true"></i>
-                    <div>
-                      <b>高専ロボコン2024（Bリーダー）</b>
-                      <span>チーム内の推進と実装の落とし込みを担当</span>
-                    </div>
+                <div class="timeline-year-body">
+                  <div class="timeline-item">
+                    <small>Robocon / B Leader</small>
+                    <strong>高専ロボコン2024（Bリーダー）</strong>
+                    <span>チーム内の推進と実装の落とし込みを担当。</span>
                   </div>
                 </div>
               </div>
             </div>
-
-            <div class="titleRow" style="margin-top:18px">
-              <h3>中学</h3>
-              <div class="chip">JUNIOR HIGH</div>
-            </div>
-
-            <div class="timeline">
-              <div class="tlGroup reveal2">
-                <div class="tlHead">
-                  <b>2022</b>
-                  <span>Activities</span>
-                </div>
-                <div class="tlBody">
-                  <div class="event">
-                    <i aria-hidden="true"></i>
-                    <div>
-                      <b>#地球塾2050 B（NTT）</b>
-                      <span>プロジェクト型学習での発想・実行経験</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
-        </div>
+        </article>
 
+        <article class="card span-4 reveal">
+          <div class="card-inner">
+            <div class="card-top">
+              <div>
+                <h3>Earlier Step</h3>
+                <p>Junior High</p>
+              </div>
+              <div class="section-chip">Origin</div>
+            </div>
+            <div class="timeline-list">
+              <div class="timeline-item">
+                <small>2022 / Activities</small>
+                <strong>#地球塾2050 B（NTT）</strong>
+                <span>プロジェクト型学習での発想・実行経験を獲得。</span>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- Programming -->
-    <section id="programming">
-      <div class="sectionHead">
+    <section id="stack">
+      <div class="section-head reveal">
         <div>
-          <h2 class="reveal">Programming</h2>
-          <p class="reveal">プログラミングスキル</p>
+          <div class="section-mark"><i aria-hidden="true"></i> Programming</div>
+          <h2 class="section-title">Microcontrollers / Languages / Runtime</h2>
         </div>
-        <div class="chip reveal">DEV STACK</div>
+        <div class="section-chip">Dev Stack</div>
       </div>
 
       <div class="grid">
-        <div class="card span-6 reveal2">
-          <div class="inner">
-            <div class="titleRow">
-              <h3>マイコン / ボード</h3>
-              <div class="chip">MCU</div>
+        <article class="card span-6 reveal">
+          <div class="card-inner">
+            <div class="card-top">
+              <div>
+                <h3>Microcontrollers / Boards</h3>
+                <p>制御対象と実装の足場</p>
+              </div>
+              <div class="section-chip">MCU</div>
             </div>
-            <ul class="clean">
-              <li class="li">
-                <i aria-hidden="true"></i>
-                <div>
-                  <b>Arduino</b>
-                  <span>プロトタイピング、I/O制御、周辺機器統合</span>
-                </div>
-              </li>
-              <li class="li">
-                <i aria-hidden="true"></i>
-                <div>
-                  <b>Mbed</b>
-                  <span>組み込み開発の基礎、ドライバ周り</span>
-                </div>
-              </li>
-              <li class="li">
-                <i aria-hidden="true"></i>
-                <div>
-                  <b>Raspberry Pi Pico</b>
-                  <span>小型制御、センサ入力、リアルタイム制御</span>
-                </div>
-              </li>
-              <li class="li">
-                <i aria-hidden="true"></i>
-                <div>
-                  <b>STM32</b>
-                  <span>低レイヤ寄りの実装、制御寄りの最適化</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="card span-6 reveal2">
-          <div class="inner">
-            <div class="titleRow">
-              <h3>言語 / 実行環境</h3>
-              <div class="chip">LANG</div>
+            <div class="stack-grid">
+              <div class="stack-item">
+                <small>Board</small>
+                <strong>Arduino</strong>
+                <span>プロトタイピング、I/O制御、周辺機器統合。</span>
+              </div>
+              <div class="stack-item">
+                <small>Board</small>
+                <strong>Mbed</strong>
+                <span>組み込み開発の基礎、ドライバ周り。</span>
+              </div>
+              <div class="stack-item">
+                <small>Board</small>
+                <strong>Raspberry Pi Pico</strong>
+                <span>小型制御、センサ入力、リアルタイム制御。</span>
+              </div>
+              <div class="stack-item">
+                <small>Board</small>
+                <strong>STM32</strong>
+                <span>低レイヤ寄りの実装、制御寄りの最適化。</span>
+              </div>
             </div>
-            <ul class="clean">
-              <li class="li">
-                <i aria-hidden="true"></i>
-                <div>
-                  <b>C</b>
-                  <span>組み込み、速度・メモリ制約下の実装</span>
-                </div>
-              </li>
-              <li class="li">
-                <i aria-hidden="true"></i>
-                <div>
-                  <b>Python</b>
-                  <span>検証用スクリプト、データ処理、制御補助</span>
-                </div>
-              </li>
-              <li class="li">
-                <i aria-hidden="true"></i>
-                <div>
-                  <b>Ubuntu 組み込み</b>
-                  <span>システム構築、運用、パッケージ管理</span>
-                </div>
-              </li>
-              <li class="li">
-                <i aria-hidden="true"></i>
-                <div>
-                  <b>Python / ROS2 Humble / OpenCV</b>
-                  <span>ロボット基盤、画像処理、認識の入り口</span>
-                </div>
-              </li>
-            </ul>
           </div>
-        </div>
+        </article>
 
+        <article class="card span-6 reveal">
+          <div class="card-inner">
+            <div class="card-top">
+              <div>
+                <h3>Languages / Runtime</h3>
+                <p>ソフトウェア側の実務レンジ</p>
+              </div>
+              <div class="section-chip">Lang</div>
+            </div>
+            <div class="stack-grid">
+              <div class="stack-item">
+                <small>Language</small>
+                <strong>C</strong>
+                <span>組み込み、速度・メモリ制約下の実装。</span>
+              </div>
+              <div class="stack-item">
+                <small>Language</small>
+                <strong>Python</strong>
+                <span>検証スクリプト、データ処理、制御補助。</span>
+              </div>
+              <div class="stack-item">
+                <small>Runtime</small>
+                <strong>Ubuntu 組み込み</strong>
+                <span>システム構築、運用、パッケージ管理。</span>
+              </div>
+              <div class="stack-item">
+                <small>Framework</small>
+                <strong>Python / ROS2 Humble / OpenCV</strong>
+                <span>ロボット基盤、画像処理、認識の入り口。</span>
+              </div>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact">
-      <div class="sectionHead">
+      <div class="section-head reveal">
         <div>
-          <h2 class="reveal">Contact</h2>
-          <p class="reveal">リンク</p>
+          <div class="section-mark"><i aria-hidden="true"></i> Contact</div>
+          <h2 class="section-title">Links & Social</h2>
         </div>
-        <div class="chip reveal">GET IN TOUCH</div>
+        <div class="section-chip">Get In Touch</div>
       </div>
 
-      <div class="grid">
-        <div class="card span-12 reveal2">
-          <div class="inner">
-            <div class="titleRow">
-              <h3>SNS</h3>
-              <div class="chip">SOCIAL</div>
+      <div class="social-grid reveal">
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-top">
+              <div>
+                <h3>Instagram</h3>
+              </div>
+              <div class="section-chip">Social</div>
             </div>
-
-            <div class="socialRow">
-              <span class="handle"><span class="mark" aria-hidden="true"></span><span>Instagram: neya_kosen</span></span>
-
-              <a class="btn magnetic" href="https://www.instagram.com/neya_kosen/" target="_blank" rel="noopener noreferrer">
+            <div class="social-handle">
+              <span class="mark" aria-hidden="true"></span>
+              <div>
+                <strong>@neya_kosen</strong>
+              </div>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:12px;">
+              <a class="solid-btn" href="https://www.instagram.com/neya_kosen/" target="_blank" rel="noopener noreferrer">
                 <span>Instagram を開く</span>
                 <span class="arrow" aria-hidden="true"></span>
               </a>
-
-              <a class="btn magnetic" href="#top">
-                <span>トップへ</span>
-                <span class="arrow" aria-hidden="true"></span>
-              </a>
-
-              <a class="btn magnetic" href="#skills">
-                <span>スキルへ</span>
-                <span class="arrow" aria-hidden="true"></span>
-              </a>
-
-              <a class="btn magnetic" href="#timeline">
-                <span>経歴へ</span>
+              <a class="ghost-btn" href="#top">
+                <span>トップへ戻る</span>
                 <span class="arrow" aria-hidden="true"></span>
               </a>
             </div>
-
           </div>
-        </div>
+        </article>
+
+        <article class="card">
+          <div class="card-inner">
+            <div class="card-top">
+              <div>
+                <h3>Quick Navigation</h3>
+              </div>
+              <div class="section-chip">Jump</div>
+            </div>
+            <div class="contact-list">
+              <div class="contact-row">
+                <small>Section</small>
+                <strong>Highlights</strong>
+              </div>
+              <div class="contact-row">
+                <small>Section</small>
+                <strong>Skills</strong>
+              </div>
+              <div class="contact-row">
+                <small>Section</small>
+                <strong>Timeline</strong>
+              </div>
+            </div>
+            <div style="display:flex; flex-wrap:wrap; gap:12px;">
+              <a class="mini-link" href="#highlights">Highlights</a>
+              <a class="mini-link" href="#skills">Skills</a>
+              <a class="mini-link" href="#timeline">Timeline</a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
-
-    <div class="sep" aria-hidden="true"></div>
-    <footer>
-      <div class="left">
-        <div class="mono">© <span id="y"></span> Takumi Sakaguchi</div>
-        <div class="mono muted">Hardware / Embedded / Robotics</div>
-      </div>
-      <div class="mono right muted">Minimal Crafted</div>
-    </footer>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.5.0/tsparticles.bundle.min.js"></script>
+  <footer>
+    <div class="left">
+      <div style="font-family:var(--mono);">© <span id="year"></span> Takumi Sakaguchi</div>
+      <div style="font-family:var(--mono);">Hardware / Embedded / Robotics</div>
+    </div>
+    <div style="font-family:var(--mono);">Minimal, cinematic, high-contrast portfolio.</div>
+  </footer>
 
   <script>
-    (function(){
-      document.getElementById("y").textContent = new Date().getFullYear();
+    (() => {
+      const doc = document.documentElement;
+      const progressBar = document.getElementById("progressBar");
+      const sections = [...document.querySelectorAll("main section[id]")];
+      const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
+      const revealEls = [...document.querySelectorAll('.reveal')];
+      const yearEl = document.getElementById('year');
+      yearEl.textContent = new Date().getFullYear();
 
-      const progressBar = document.querySelector(".progressBar");
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
       function updateProgress(){
-        const doc = document.documentElement;
-        const scrollTop = doc.scrollTop || document.body.scrollTop;
-        const scrollHeight = (doc.scrollHeight || document.body.scrollHeight) - doc.clientHeight;
-        const p = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
-        progressBar.style.width = p.toFixed(2) + "%";
-      }
-      window.addEventListener("scroll", updateProgress, {passive:true});
-      updateProgress();
-
-      // scrollP (0..1) for top fade/shift
-      function updateScrollP(){
-        const y = window.scrollY || 0;
-        const h = Math.max(1, window.innerHeight);
-        const p = Math.min(1, Math.max(0, y / (h * 0.85)));
-        document.documentElement.style.setProperty("--scrollP", String(p));
-      }
-      window.addEventListener("scroll", updateScrollP, {passive:true});
-      window.addEventListener("resize", updateScrollP, {passive:true});
-      updateScrollP();
-
-      const c1 = document.querySelector(".cursor");
-      const c2 = document.querySelector(".cursor2");
-      let mx = window.innerWidth * 0.5;
-      let my = window.innerHeight * 0.4;
-      let x1 = mx, y1 = my, x2 = mx, y2 = my;
-
-      window.addEventListener("mousemove", (e)=>{
-        mx = e.clientX;
-        my = e.clientY;
-      }, {passive:true});
-
-      function tick(){
-        x1 += (mx - x1) * 0.35;
-        y1 += (my - y1) * 0.35;
-        x2 += (mx - x2) * 0.085;
-        y2 += (my - y2) * 0.085;
-
-        c1.style.left = x1 + "px";
-        c1.style.top  = y1 + "px";
-        c2.style.left = x2 + "px";
-        c2.style.top  = y2 + "px";
-
-        requestAnimationFrame(tick);
-      }
-      tick();
-
-      const isTouch = matchMedia("(pointer: coarse)").matches;
-      if (isTouch){
-        c1.style.display = "none";
-        c2.style.display = "none";
+        const scrollTop = window.scrollY || doc.scrollTop;
+        const max = Math.max(1, doc.scrollHeight - window.innerHeight);
+        const p = (scrollTop / max) * 100;
+        progressBar.style.width = p.toFixed(2) + '%';
       }
 
-      let lenis = null;
-      if (window.Lenis){
-        lenis = new Lenis({
-          duration: 1.05,
-          smooth: true,
-          smoothTouch: false,
-          easing: (t)=> Math.min(1, 1.001 - Math.pow(2, -10 * t))
+      function setCursorGlow(x, y){
+        doc.style.setProperty('--mx', x + 'px');
+        doc.style.setProperty('--my', y + 'px');
+      }
+
+      window.addEventListener('mousemove', (e) => setCursorGlow(e.clientX, e.clientY), { passive:true });
+      setCursorGlow(window.innerWidth * .65, window.innerHeight * .3);
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add('show');
         });
-        function raf(time){
-          lenis.raf(time);
-          requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      revealEls.forEach((el) => observer.observe(el));
 
-        document.querySelectorAll('a[href^="#"]').forEach(a=>{
-          a.addEventListener("click", (e)=>{
-            const id = a.getAttribute("href");
-            if (!id || id === "#") return;
-            const el = document.querySelector(id);
-            if (!el) return;
-            e.preventDefault();
-            lenis.scrollTo(el, { offset: -80 });
-          });
+      const navObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const id = '#' + entry.target.id;
+          navLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === id));
         });
-      }
+      }, { threshold: 0.46 });
+      sections.forEach((section) => navObserver.observe(section));
 
-      const magnets = document.querySelectorAll(".magnetic");
-      magnets.forEach((el)=>{
-        const strength = 16;
-        let rect = null;
-
-        el.addEventListener("mouseenter", ()=>{
-          rect = el.getBoundingClientRect();
+      const bars = [...document.querySelectorAll('.skill-bar')];
+      const barObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const bar = entry.target;
+          const fill = bar.querySelector('.fill');
+          const target = Number(bar.dataset.fill || 0);
+          requestAnimationFrame(() => { fill.style.width = target + '%'; });
+          barObserver.unobserve(bar);
         });
+      }, { threshold: .25 });
+      bars.forEach((bar) => barObserver.observe(bar));
 
-        el.addEventListener("mousemove", (e)=>{
-          if (!rect) rect = el.getBoundingClientRect();
-          const dx = e.clientX - (rect.left + rect.width/2);
-          const dy = e.clientY - (rect.top + rect.height/2);
-          const tx = (dx / rect.width) * strength;
-          const ty = (dy / rect.height) * strength;
-          el.style.transform = "translate(" + tx + "px," + ty + "px)";
-        });
-
-        el.addEventListener("mouseleave", ()=>{
-          el.style.transform = "translate(0px,0px)";
+      const smoothLinks = [...document.querySelectorAll('a[href^="#"]')];
+      smoothLinks.forEach((link) => {
+        link.addEventListener('click', (e) => {
+          const id = link.getAttribute('href');
+          if (!id || id === '#') return;
+          const target = document.querySelector(id);
+          if (!target) return;
+          e.preventDefault();
+          const y = target.getBoundingClientRect().top + window.scrollY - 92;
+          window.scrollTo({ top: y, behavior: prefersReduced ? 'auto' : 'smooth' });
         });
       });
 
-      function bindLightFollow(el){
-        let r = null;
-        el.addEventListener("mouseenter", ()=>{
-          r = el.getBoundingClientRect();
-        });
-        el.addEventListener("mousemove", (e)=>{
-          if (!r) r = el.getBoundingClientRect();
-          const px = ((e.clientX - r.left) / r.width) * 100;
-          const py = ((e.clientY - r.top) / r.height) * 100;
-          el.style.setProperty("--hx", px.toFixed(2) + "%");
-          el.style.setProperty("--hy", py.toFixed(2) + "%");
-        });
-      }
-
-      document.querySelectorAll(".card").forEach(bindLightFollow);
-
-      async function initParticles(){
-        if (!window.tsParticles) return;
-        await tsParticles.load("fx", {
-          background: { color: { value: "transparent" } },
-          fpsLimit: 60,
-          fullScreen: { enable: true, zIndex: 0 },
-          particles: {
-            number: { value: 56, density: { enable: true, area: 950 } },
-            color: { value: ["#d6b46a","#22d3ee","#7c3aed","#ffffff"] },
-            shape: { type: "circle" },
-            opacity: { value: { min: 0.10, max: 0.34 } },
-            size: { value: { min: 1, max: 3 } },
-            links: {
-              enable: true,
-              distance: 140,
-              color: "#ffffff",
-              opacity: 0.07,
-              width: 1
-            },
-            move: {
-              enable: true,
-              speed: 0.75,
-              direction: "none",
-              random: true,
-              straight: false,
-              outModes: { default: "out" }
-            }
-          },
-          interactivity: {
-            detectsOn: "window",
-            events: {
-              onHover: { enable: true, mode: "repulse" },
-              onClick: { enable: true, mode: "push" },
-              resize: true
-            },
-            modes: {
-              repulse: { distance: 120, duration: 0.35 },
-              push: { quantity: 3 }
-            }
-          },
-          detectRetina: true
-        });
-      }
-      initParticles();
-
-      const canGSAP = !!window.gsap && !!window.ScrollTrigger;
-      if (canGSAP){
-        gsap.registerPlugin(ScrollTrigger);
-
-        gsap.utils.toArray(".reveal").forEach((el)=>{
-          gsap.to(el, {
-            opacity: 1,
-            y: 0,
-            duration: 0.9,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 88%",
-              toggleActions: "play none none reverse"
-            }
+      const tiltNodes = [...document.querySelectorAll('[data-tilt]')];
+      tiltNodes.forEach((node) => {
+        if (window.matchMedia('(pointer: coarse)').matches || prefersReduced) return;
+        let raf = 0;
+        node.addEventListener('mousemove', (e) => {
+          const rect = node.getBoundingClientRect();
+          const px = (e.clientX - rect.left) / rect.width;
+          const py = (e.clientY - rect.top) / rect.height;
+          cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(() => {
+            const rx = (py - .5) * -8;
+            const ry = (px - .5) * 10;
+            node.style.transform = `perspective(1200px) rotateX(${rx}deg) rotateY(${ry}deg)`;
           });
         });
-
-        gsap.utils.toArray(".reveal2").forEach((el)=>{
-          gsap.to(el, {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            duration: 1.05,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: el,
-              start: "top 85%",
-              toggleActions: "play none none reverse"
-            }
-          });
+        node.addEventListener('mouseleave', () => {
+          node.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
         });
+      });
 
-        document.querySelectorAll(".bar").forEach((bar)=>{
-          const fill = bar.querySelector(".fill");
-          const target = parseFloat(bar.getAttribute("data-fill") || "70");
-          gsap.to(fill, {
-            width: target + "%",
-            duration: 1.25,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: bar,
-              start: "top 85%"
-            }
-          });
-        });
-
-        if (lenis){
-          lenis.on("scroll", ScrollTrigger.update);
-          gsap.ticker.add((time)=>{
-            lenis.raf(time * 1000);
-          });
-          gsap.ticker.lagSmoothing(0);
-        }
-      } else {
-        document.querySelectorAll(".reveal,.reveal2").forEach(el=>{
-          el.style.opacity = "1";
-          el.style.transform = "none";
-        });
-        document.querySelectorAll(".bar").forEach(bar=>{
-          const fill = bar.querySelector(".fill");
-          const target = parseFloat(bar.getAttribute("data-fill") || "70");
-          fill.style.width = target + "%";
-        });
-      }
-
-      const sections = ["#about","#skills","#timeline","#programming","#contact"].map(s=>document.querySelector(s)).filter(Boolean);
-      const navLinks = Array.from(document.querySelectorAll('nav a[href^="#"]'));
-      const map = new Map(navLinks.map(a=>[a.getAttribute("href"), a]));
-
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{
-          if (!entry.isIntersecting) return;
-          navLinks.forEach(a=>a.classList.remove("active"));
-          const id = "#" + entry.target.id;
-          const link = map.get(id);
-          if (link) link.classList.add("active");
-        });
-      }, { root: null, threshold: 0.45 });
-
-      sections.forEach(s=>io.observe(s));
+      window.addEventListener('scroll', updateProgress, { passive:true });
+      updateProgress();
     })();
   </script>
 </body>
