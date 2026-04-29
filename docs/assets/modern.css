@@ -1,0 +1,38 @@
+:root{
+  --accent-grad: linear-gradient(120deg, rgba(115,223,255,.95), rgba(138,123,255,.92), rgba(255,127,147,.88));
+}
+
+header{
+  backdrop-filter: blur(24px) saturate(120%);
+}
+
+.card{
+  position: relative;
+  isolation: isolate;
+}
+
+.card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  background: linear-gradient(140deg, rgba(255,255,255,.10), rgba(255,255,255,0) 35%);
+  opacity: .45;
+  pointer-events:none;
+}
+
+.section-title{
+  background: var(--accent-grad);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color: transparent;
+}
+
+.social-grid .card:first-child .solid-btn,
+.social-grid .card:first-child .ghost-btn{
+  min-width: 180px;
+}
+
+.modern-parallax{
+  transform: translateY(calc(var(--scroll, 0) * -1px));
+}

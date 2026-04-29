@@ -28,7 +28,8 @@
     "alternateName": "Takumi Sakaguchi",
     "url": "https://neyayomosugara.github.io/",
     "sameAs": [
-      "https://www.instagram.com/neya_kosen/"
+      "https://www.instagram.com/neya_kosen/",
+      "https://www.linkedin.com/in/%E6%8B%93%E6%B5%B7-%E5%9D%82%E5%8F%A3-61258a3ab/?skipRedirect=true"
     ],
     "jobTitle": "Hardware / Embedded / Robotics",
     "knowsAbout": [
@@ -850,6 +851,26 @@
       line-height:1.7;
       color:var(--muted);
     }
+    .timeline-item{
+      transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease;
+    }
+    .timeline-item:hover{
+      transform: translateY(-2px);
+      border-color: rgba(115,223,255,.32);
+      box-shadow: 0 14px 34px rgba(0,0,0,.24);
+    }
+    .award-badge{
+      display:inline-block;
+      margin-top:8px;
+      padding:4px 10px;
+      border-radius:999px;
+      font-size:11px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color:var(--gold);
+      border:1px solid rgba(222,195,135,.42);
+      background:rgba(222,195,135,.10);
+    }
 
     .highlight-grid{
       display:grid;
@@ -1094,6 +1115,7 @@
       body::after{ animation:none !important; }
     }
   </style>
+  <link rel="stylesheet" href="./assets/modern.css" />
 </head>
 <body>
   <a class="skip" href="#about">本文へ移動</a>
@@ -1437,6 +1459,12 @@
                     <span>プロジェクト名「厳島」。Aリーダーとして企画・実装を牽引。</span>
                   </div>
                   <div class="timeline-item">
+                    <small>Entrepreneur Summit / Idea</small>
+                    <strong>第三回目起業家サミットアイデア部門　優秀賞</strong>
+                    <span>岸・藤原研究室メンバーとして参画し、アイデアの具体化と発表を担当。</span>
+                    <em class="award-badge">Excellent Award</em>
+                  </div>
+                  <div class="timeline-item">
                     <small>NEDO / Hardware Lead</small>
                     <strong>NEDO NEP（ハードウェアリーダー）</strong>
                     <span>ハードウェア側の意思決定と実装を主導。</span>
@@ -1576,7 +1604,7 @@
           <div class="card-inner">
             <div class="card-top">
               <div>
-                <h3>Instagram</h3>
+                <h3>Instagram / LinkedIn</h3>
               </div>
               <div class="section-chip">Social</div>
             </div>
@@ -1589,6 +1617,10 @@
             <div style="display:flex; flex-wrap:wrap; gap:12px;">
               <a class="solid-btn" href="https://www.instagram.com/neya_kosen/" target="_blank" rel="noopener noreferrer">
                 <span>Instagram を開く</span>
+                <span class="arrow" aria-hidden="true"></span>
+              </a>
+              <a class="ghost-btn" href="https://www.linkedin.com/in/%E6%8B%93%E6%B5%B7-%E5%9D%82%E5%8F%A3-61258a3ab/?skipRedirect=true" target="_blank" rel="noopener noreferrer">
+                <span>LinkedIn を開く</span>
                 <span class="arrow" aria-hidden="true"></span>
               </a>
               <a class="ghost-btn" href="#top">
@@ -1640,98 +1672,7 @@
     <div style="font-family:var(--mono);">Minimal, cinematic, high-contrast portfolio.</div>
   </footer>
 
-  <script>
-    (() => {
-      const doc = document.documentElement;
-      const progressBar = document.getElementById("progressBar");
-      const sections = [...document.querySelectorAll("main section[id]")];
-      const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
-      const revealEls = [...document.querySelectorAll('.reveal')];
-      const yearEl = document.getElementById('year');
-      yearEl.textContent = new Date().getFullYear();
+  <script src="./assets/site.js"></script>
 
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      function updateProgress(){
-        const scrollTop = window.scrollY || doc.scrollTop;
-        const max = Math.max(1, doc.scrollHeight - window.innerHeight);
-        const p = (scrollTop / max) * 100;
-        progressBar.style.width = p.toFixed(2) + '%';
-      }
-
-      function setCursorGlow(x, y){
-        doc.style.setProperty('--mx', x + 'px');
-        doc.style.setProperty('--my', y + 'px');
-      }
-
-      window.addEventListener('mousemove', (e) => setCursorGlow(e.clientX, e.clientY), { passive:true });
-      setCursorGlow(window.innerWidth * .65, window.innerHeight * .3);
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add('show');
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-      revealEls.forEach((el) => observer.observe(el));
-
-      const navObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const id = '#' + entry.target.id;
-          navLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === id));
-        });
-      }, { threshold: 0.46 });
-      sections.forEach((section) => navObserver.observe(section));
-
-      const bars = [...document.querySelectorAll('.skill-bar')];
-      const barObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const bar = entry.target;
-          const fill = bar.querySelector('.fill');
-          const target = Number(bar.dataset.fill || 0);
-          requestAnimationFrame(() => { fill.style.width = target + '%'; });
-          barObserver.unobserve(bar);
-        });
-      }, { threshold: .25 });
-      bars.forEach((bar) => barObserver.observe(bar));
-
-      const smoothLinks = [...document.querySelectorAll('a[href^="#"]')];
-      smoothLinks.forEach((link) => {
-        link.addEventListener('click', (e) => {
-          const id = link.getAttribute('href');
-          if (!id || id === '#') return;
-          const target = document.querySelector(id);
-          if (!target) return;
-          e.preventDefault();
-          const y = target.getBoundingClientRect().top + window.scrollY - 92;
-          window.scrollTo({ top: y, behavior: prefersReduced ? 'auto' : 'smooth' });
-        });
-      });
-
-      const tiltNodes = [...document.querySelectorAll('[data-tilt]')];
-      tiltNodes.forEach((node) => {
-        if (window.matchMedia('(pointer: coarse)').matches || prefersReduced) return;
-        let raf = 0;
-        node.addEventListener('mousemove', (e) => {
-          const rect = node.getBoundingClientRect();
-          const px = (e.clientX - rect.left) / rect.width;
-          const py = (e.clientY - rect.top) / rect.height;
-          cancelAnimationFrame(raf);
-          raf = requestAnimationFrame(() => {
-            const rx = (py - .5) * -8;
-            const ry = (px - .5) * 10;
-            node.style.transform = `perspective(1200px) rotateX(${rx}deg) rotateY(${ry}deg)`;
-          });
-        });
-        node.addEventListener('mouseleave', () => {
-          node.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
-        });
-      });
-
-      window.addEventListener('scroll', updateProgress, { passive:true });
-      updateProgress();
-    })();
-  </script>
 </body>
 </html>
