@@ -44,13 +44,13 @@
 
   <style>
     :root{
-      --bg: #05070b;
-      --bg-soft: #0a0f17;
-      --panel: rgba(12,16,24,.68);
-      --panel-2: rgba(255,255,255,.04);
-      --panel-3: rgba(255,255,255,.06);
-      --line: rgba(255,255,255,.10);
-      --line-strong: rgba(255,255,255,.18);
+      --bg: #010103;
+      --bg-soft: #04040a;
+      --panel: rgba(255,255,255,.04);
+      --panel-2: rgba(255,255,255,.03);
+      --panel-3: rgba(255,255,255,.05);
+      --line: rgba(255,255,255,.08);
+      --line-strong: rgba(255,255,255,.14);
       --text: rgba(255,255,255,.96);
       --muted: rgba(255,255,255,.70);
       --muted-2: rgba(255,255,255,.48);
@@ -119,9 +119,9 @@
       background:
         linear-gradient(to right, rgba(255,255,255,.04) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255,255,255,.03) 1px, transparent 1px);
-      background-size: 68px 68px;
-      mask-image: radial-gradient(circle at 50% 25%, rgba(0,0,0,1), rgba(0,0,0,.2) 55%, transparent 78%);
-      opacity:.28;
+      background-size: 80px 80px;
+      mask-image: radial-gradient(circle at 50% 25%, rgba(0,0,0,1), rgba(0,0,0,.15) 50%, transparent 72%);
+      opacity:.09;
     }
 
     body::after{
@@ -321,7 +321,7 @@
     section{
       width:var(--container);
       margin:0 auto;
-      padding: 26px 0;
+      padding: 110px 0;
       scroll-margin-top: calc(var(--header-h) + 20px);
     }
 
@@ -329,7 +329,7 @@
       min-height: calc(100svh - var(--header-h));
       display:grid;
       align-items:center;
-      padding: 30px 0 46px;
+      padding: 80px 0 100px;
       position:relative;
       isolation:isolate;
     }
@@ -348,7 +348,7 @@
     .hero-grid{
       display:grid;
       grid-template-columns: 1.18fr .82fr;
-      gap:26px;
+      gap:40px;
       align-items:stretch;
     }
 
@@ -385,7 +385,7 @@
     }
 
     .hero-copy{
-      padding:34px;
+      padding:52px;
       min-height: 720px;
       display:flex;
       flex-direction:column;
@@ -559,12 +559,12 @@
     .hero-side{
       display:grid;
       grid-template-rows: 1fr auto;
-      gap:18px;
+      gap:28px;
     }
     .portrait-card{
-      padding:20px;
+      padding:32px;
       display:grid;
-      gap:18px;
+      gap:28px;
       align-content:space-between;
       min-height:720px;
     }
@@ -638,9 +638,9 @@
     }
 
     .status-card{
-      padding:18px 20px;
+      padding:32px;
       display:grid;
-      gap:14px;
+      gap:20px;
     }
     .status-list{
       display:grid;
@@ -671,7 +671,7 @@
       grid-template-columns: 1fr auto;
       gap:18px;
       align-items:end;
-      margin-bottom:18px;
+      margin-bottom:48px;
     }
     .section-mark{
       display:inline-flex;
@@ -723,7 +723,7 @@
     .grid{
       display:grid;
       grid-template-columns: repeat(12, minmax(0, 1fr));
-      gap:16px;
+      gap:24px;
     }
     .span-12{ grid-column: span 12; }
     .span-8{ grid-column: span 8; }
@@ -756,9 +756,9 @@
     .card-inner{
       position:relative;
       z-index:1;
-      padding:22px;
+      padding:38px;
       display:grid;
-      gap:16px;
+      gap:24px;
     }
     .card-top{
       display:flex;
@@ -791,7 +791,7 @@
     .timeline-list,
     .feature-list{
       display:grid;
-      gap:12px;
+      gap:16px;
     }
     .info-row,
     .stack-item,
@@ -875,14 +875,14 @@
     .highlight-grid{
       display:grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap:12px;
+      gap:24px;
     }
     .highlight-card{
-      padding:18px;
+      padding:36px;
       border-radius:22px;
       border:1px solid rgba(255,255,255,.10);
       background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      min-height: 220px;
+      min-height: 280px;
       display:flex;
       flex-direction:column;
       justify-content:space-between;
@@ -915,7 +915,7 @@
       line-height:1.75;
     }
 
-    .skill-bars{ display:grid; gap:12px; }
+    .skill-bars{ display:grid; gap:18px; }
     .skill-bar{
       padding:14px 14px 12px;
       border-radius:18px;
@@ -955,7 +955,7 @@
       box-shadow: 0 8px 20px rgba(115,223,255,.18);
     }
 
-    .timeline-block{ display:grid; gap:14px; }
+    .timeline-block{ display:grid; gap:20px; }
     .timeline-year{
       border-radius:24px;
       border:1px solid rgba(255,255,255,.10);
@@ -993,7 +993,7 @@
     .stack-grid{
       display:grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap:12px;
+      gap:20px;
     }
 
     .mini-link{
@@ -1069,10 +1069,45 @@
       transform: translateY(0) scale(1);
     }
 
+    /* ── Section separator ── */
+    section + section{
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+
+    /* ── Luxury body text ── */
+    .lede{
+      font-size: clamp(15px, 1.5vw, 18px);
+      line-height: 2.0;
+      letter-spacing: .01em;
+    }
+    .section-desc{
+      font-size: 16px;
+      line-height: 2.0;
+    }
+
+    /* ── Card border: slightly stronger ── */
+    .card{
+      border-color: rgba(255,255,255,.12);
+    }
+    .glass{
+      border-color: rgba(255,255,255,.12);
+    }
+
+    /* ── Footer breathing room ── */
+    footer{
+      padding: 48px 0 60px;
+    }
+
+    /* ── Social grid (single card in contact) ── */
+    .contact-single{
+      display: block;
+    }
+
     @media (max-width: 1100px){
       .hero-grid,
       .social-grid{
         grid-template-columns: 1fr;
+        gap: 28px;
       }
       .hero-copy,
       .portrait-card{ min-height:auto; }
@@ -1090,10 +1125,13 @@
       .nav{ gap:12px; }
       .nav-links{ display:none; }
       .metrics{ grid-template-columns: 1fr; }
-      .hero-copy{ padding:22px; }
-      .portrait-card{ padding:18px; }
-      .section-head{ grid-template-columns: 1fr; }
-      .highlight-card{ min-height:unset; }
+      .hero-copy{ padding:28px; }
+      .portrait-card{ padding:24px; }
+      .card-inner{ padding:24px; }
+      .status-card{ padding:24px; }
+      .section-head{ grid-template-columns: 1fr; margin-bottom: 32px; }
+      .highlight-card{ min-height:unset; padding:28px; }
+      section{ padding: 72px 0; }
     }
 
     @media (max-width: 640px){
@@ -1101,11 +1139,11 @@
       header{ height:68px; }
       .brand-copy span{ display:none; }
       .contact-chip span:last-child{ display:none; }
-      section{ padding: 18px 0; }
-      .hero{ padding-top: 18px; }
+      section{ padding: 56px 0; }
+      .hero{ padding-top: 40px; padding-bottom: 60px; }
       .hero-title{ line-height:.92; }
       .portrait-frame{ min-height: 360px; }
-      footer{ flex-direction:column; align-items:flex-start; }
+      footer{ flex-direction:column; align-items:flex-start; padding: 36px 0 48px; }
     }
 
     @media (prefers-reduced-motion: reduce){
@@ -1481,7 +1519,7 @@
                   <div class="timeline-item">
                     <small>Robocon / B Leader</small>
                     <strong>高専ロボコン2024（Bリーダー）</strong>
-                    <span>チーム内の推進と実装の落とし込みを担当。</span>
+                    <span>中国地区大会 YASUKAWA賞</span>
                   </div>
                 </div>
               </div>
@@ -1599,68 +1637,38 @@
         <div class="section-chip">Get In Touch</div>
       </div>
 
-      <div class="social-grid reveal">
-        <article class="card">
-          <div class="card-inner">
-            <div class="card-top">
-              <div>
-                <h3>Instagram / LinkedIn</h3>
-              </div>
-              <div class="section-chip">Social</div>
+      <article class="card reveal">
+        <div class="card-inner">
+          <div class="card-top">
+            <div>
+              <h3>Instagram / LinkedIn</h3>
+              <p>@neya_kosen</p>
             </div>
-            <div class="social-handle">
-              <span class="mark" aria-hidden="true"></span>
-              <div>
-                <strong>@neya_kosen</strong>
-              </div>
-            </div>
-            <div style="display:flex; flex-wrap:wrap; gap:12px;">
-              <a class="solid-btn" href="https://www.instagram.com/neya_kosen/" target="_blank" rel="noopener noreferrer">
-                <span>Instagram を開く</span>
-                <span class="arrow" aria-hidden="true"></span>
-              </a>
-              <a class="ghost-btn" href="https://www.linkedin.com/in/%E6%8B%93%E6%B5%B7-%E5%9D%82%E5%8F%A3-61258a3ab/?skipRedirect=true" target="_blank" rel="noopener noreferrer">
-                <span>LinkedIn を開く</span>
-                <span class="arrow" aria-hidden="true"></span>
-              </a>
-              <a class="ghost-btn" href="#top">
-                <span>トップへ戻る</span>
-                <span class="arrow" aria-hidden="true"></span>
-              </a>
+            <div class="section-chip">Social</div>
+          </div>
+          <div class="social-handle">
+            <span class="mark" aria-hidden="true"></span>
+            <div>
+              <strong>坂口 拓海 — Takumi Sakaguchi</strong>
+              <span>Hardware / Embedded / Robotics</span>
             </div>
           </div>
-        </article>
-
-        <article class="card">
-          <div class="card-inner">
-            <div class="card-top">
-              <div>
-                <h3>Quick Navigation</h3>
-              </div>
-              <div class="section-chip">Jump</div>
-            </div>
-            <div class="contact-list">
-              <div class="contact-row">
-                <small>Section</small>
-                <strong>Highlights</strong>
-              </div>
-              <div class="contact-row">
-                <small>Section</small>
-                <strong>Skills</strong>
-              </div>
-              <div class="contact-row">
-                <small>Section</small>
-                <strong>Timeline</strong>
-              </div>
-            </div>
-            <div style="display:flex; flex-wrap:wrap; gap:12px;">
-              <a class="mini-link" href="#highlights">Highlights</a>
-              <a class="mini-link" href="#skills">Skills</a>
-              <a class="mini-link" href="#timeline">Timeline</a>
-            </div>
+          <div style="display:flex; flex-wrap:wrap; gap:16px; margin-top:8px;">
+            <a class="solid-btn" href="https://www.instagram.com/neya_kosen/" target="_blank" rel="noopener noreferrer">
+              <span>Instagram を開く</span>
+              <span class="arrow" aria-hidden="true"></span>
+            </a>
+            <a class="ghost-btn" href="https://www.linkedin.com/in/%E6%8B%93%E6%B5%B7-%E5%9D%82%E5%8F%A3-61258a3ab/?skipRedirect=true" target="_blank" rel="noopener noreferrer">
+              <span>LinkedIn を開く</span>
+              <span class="arrow" aria-hidden="true"></span>
+            </a>
+            <a class="ghost-btn" href="#top">
+              <span>トップへ戻る</span>
+              <span class="arrow" aria-hidden="true"></span>
+            </a>
           </div>
-        </article>
-      </div>
+        </div>
+      </article>
     </section>
   </main>
 

@@ -1,9 +1,10 @@
 :root{
-  --accent-grad: linear-gradient(120deg, rgba(115,223,255,.95), rgba(138,123,255,.92), rgba(255,127,147,.88));
+  --accent-grad: linear-gradient(120deg, rgba(222,195,135,.98), rgba(255,255,255,.90), rgba(115,223,255,.92));
 }
 
 header{
-  backdrop-filter: blur(24px) saturate(120%);
+  backdrop-filter: blur(28px) saturate(110%);
+  background: linear-gradient(180deg, rgba(2,2,5,.92), rgba(2,2,5,.50));
 }
 
 .card{
@@ -16,8 +17,8 @@ header{
   position:absolute;
   inset:0;
   border-radius:inherit;
-  background: linear-gradient(140deg, rgba(255,255,255,.10), rgba(255,255,255,0) 35%);
-  opacity: .45;
+  background: linear-gradient(140deg, rgba(255,255,255,.07), rgba(255,255,255,0) 40%);
+  opacity: .5;
   pointer-events:none;
 }
 
@@ -28,9 +29,9 @@ header{
   color: transparent;
 }
 
-.social-grid .card:first-child .solid-btn,
-.social-grid .card:first-child .ghost-btn{
-  min-width: 180px;
+/* Contact section: full-width single card */
+#contact .card {
+  max-width: 760px;
 }
 
 .modern-parallax{
