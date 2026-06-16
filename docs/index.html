@@ -889,6 +889,26 @@
       gap:18px;
       box-shadow: var(--shadow-md);
     }
+    a.highlight-card{
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+      transition: transform .24s ease, border-color .24s ease, box-shadow .24s ease;
+    }
+    a.highlight-card:hover{
+      transform: translateY(-5px);
+      border-color: rgba(222,195,135,.32);
+      box-shadow: 0 24px 56px rgba(0,0,0,.40);
+    }
+    .highlight-link-hint{
+      margin-top: auto;
+      padding-top: 16px;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(222,195,135,.55);
+    }
     .highlight-card .year{
       display:inline-flex;
       width:fit-content;
@@ -1354,6 +1374,7 @@
           <a href="#timeline">Timeline</a>
           <a href="#stack">Programming</a>
           <a href="#contact">Contact</a>
+          <a href="./goro.html">Research</a>
         </nav>
         <a class="contact-chip" href="#contact">
           <span class="dot" aria-hidden="true"></span>
@@ -1368,7 +1389,7 @@
       <div class="hero-split">
 
         <div class="hero-photo-col">
-          <img src="neya.png" alt="坂口拓海" loading="eager" decoding="async"
+          <img src="neya2.png" alt="坂口拓海" loading="eager" decoding="async"
                onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg,#111,#0a0a0a)';">
         </div>
 
@@ -1472,29 +1493,23 @@
     </section>
 
     <section id="highlights">
-      <div class="section-head reveal">
-        <div>
-          <div class="section-mark"><i aria-hidden="true"></i> Highlights</div>
-          <h2 class="section-title">Selected Achievements</h2>
-        </div>
-        <div class="section-chip">Impact</div>
-      </div>
-
       <div class="highlight-grid reveal">
-        <article class="highlight-card">
+        <a class="highlight-card" href="./goro.html" aria-label="AKATSUKIプロジェクト詳細ページ">
           <div class="year">2025 / Leader</div>
           <div>
-            <h3>経済産業省 AKATUKIプロジェクト 採択</h3>
+            <h3>経済産業省 AKATSUKIプロジェクト 採択</h3>
             <p>次世代無線給電技術の開発でリーダーを担当。技術面だけでなく、意思決定の中心としてプロジェクトを牽引。</p>
           </div>
-        </article>
-        <article class="highlight-card">
+          <div class="highlight-link-hint" aria-hidden="true">詳細を見る →</div>
+        </a>
+        <a class="highlight-card" href="https://www.hiroshima-cmt.ac.jp/topics/club/20251014_001559.html" target="_blank" rel="noopener noreferrer" aria-label="高専ロボコン記事（外部リンク）">
           <div class="year">2025 / Robocon</div>
           <div>
             <h3>高専ロボコン中国大会 デザイン賞 / 全国出場</h3>
             <p>Aリーダーとしてプロジェクト「厳島」を推進。造形だけでなく、全体完成度をまとめ上げる役割が強い。</p>
           </div>
-        </article>
+          <div class="highlight-link-hint" aria-hidden="true">記事を見る →</div>
+        </a>
         <article class="highlight-card">
           <div class="year">2025 / Hardware Lead</div>
           <div>
