@@ -1152,6 +1152,182 @@
       .reveal{ opacity:1; transform:none; }
       body::after{ animation:none !important; }
     }
+
+    /* ═══════════════════════════════════════════
+       HERO — Full Bleed Cinematic Split
+    ═══════════════════════════════════════════ */
+    section.hero {
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+      height: calc(100svh - var(--header-h));
+      min-height: 560px;
+    }
+
+    .hero-split {
+      display: grid;
+      grid-template-columns: 42fr 58fr;
+      height: 100%;
+    }
+
+    .hero-photo-col {
+      position: relative;
+      overflow: hidden;
+      background: #0a0a0a;
+    }
+
+    .hero-photo-col img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      filter: grayscale(8%) contrast(1.06) brightness(0.94);
+    }
+
+    .hero-photo-col::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, rgba(1,1,3,0) 50%, #010103 100%),
+        linear-gradient(180deg, rgba(1,1,3,.28) 0%, transparent 28%, transparent 68%, rgba(1,1,3,.55) 100%);
+      pointer-events: none;
+    }
+
+    .hero-text-col {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 72px 80px 72px 68px;
+      background: #010103;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-text-col::before {
+      content: "";
+      position: absolute;
+      top: -5%;
+      right: -5%;
+      width: 65%;
+      height: 75%;
+      background: radial-gradient(ellipse, rgba(222,195,135,.06), transparent 62%);
+      pointer-events: none;
+    }
+
+    .hero-split-eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.26);
+      margin-bottom: 60px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .hero-split-eyebrow::before {
+      content: "";
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(222,195,135,.75), transparent);
+      flex-shrink: 0;
+    }
+
+    .hero-split-name {
+      font-family: var(--display);
+      font-size: clamp(50px, 7.2vw, 108px);
+      line-height: 0.87;
+      letter-spacing: -0.045em;
+      text-transform: uppercase;
+      margin: 0;
+      color: #ffffff;
+    }
+
+    .hero-split-name span { display: block; }
+
+    .hero-split-name .name-second {
+      background: linear-gradient(135deg, #ffffff 0%, var(--gold) 50%, rgba(255,255,255,.80) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-split-rule {
+      width: 52px;
+      height: 1px;
+      background: linear-gradient(90deg, var(--gold), rgba(222,195,135,.12));
+      margin: 42px 0;
+    }
+
+    .hero-split-ja {
+      font-family: var(--jp);
+      font-size: clamp(20px, 2.5vw, 36px);
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      color: rgba(255,255,255,.84);
+      margin-bottom: 14px;
+    }
+
+    .hero-split-role {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.26);
+      margin: 0 0 64px;
+    }
+
+    .hero-split-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .hero-split-tag {
+      position: absolute;
+      right: 24px;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      transform-origin: center center;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.12);
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    @media (max-width: 900px) {
+      .hero-split {
+        grid-template-columns: 1fr;
+        grid-template-rows: 48vh 1fr;
+        height: auto;
+      }
+      section.hero {
+        height: auto;
+        min-height: auto;
+      }
+      .hero-photo-col { height: 48vh; }
+      .hero-photo-col::after {
+        background: linear-gradient(to bottom, rgba(1,1,3,0) 50%, #010103 100%);
+      }
+      .hero-text-col { padding: 52px 36px 64px; }
+      .hero-split-eyebrow { margin-bottom: 36px; }
+      .hero-split-rule { margin: 28px 0; }
+      .hero-split-tag { display: none; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-text-col { padding: 40px 24px 52px; }
+      .hero-split-role { margin-bottom: 44px; }
+      .hero-split-eyebrow { margin-bottom: 28px; }
+    }
   </style>
   <link rel="stylesheet" href="./assets/modern.css" />
 </head>
@@ -1189,42 +1365,27 @@
 
   <main id="top">
     <section class="hero">
-      <div class="hero-grid">
-        <article class="glass hero-copy reveal" data-tilt>
-          <div style="display:grid; gap:24px;">
-            <div class="eyebrow"><i aria-hidden="true"></i> Portfolio / Hardware / KOSEN</div>
+      <div class="hero-split">
 
-            <div class="hero-title-wrap">
-              <div class="hero-kicker">Leader of Build / Orchestrator of Execution</div>
-              <h1 class="hero-title" aria-label="Takumi Sakaguchi">
-                <span class="line">TAKUMI</span>
-                <span class="line accent">SAKAGUCHI</span>
-              </h1>
-              <div class="hero-ja">坂口 拓海</div>
-            </div>
+        <div class="hero-photo-col">
+          <img src="neya.png" alt="坂口拓海" loading="eager" decoding="async"
+               onerror="this.style.display='none'; this.parentElement.style.background='linear-gradient(135deg,#111,#0a0a0a)';">
+        </div>
 
+        <div class="hero-text-col">
+          <div class="hero-split-eyebrow" aria-hidden="true">Portfolio / Hardware / KOSEN 2025</div>
 
-          </div>
+          <h1 class="hero-split-name" aria-label="Takumi Sakaguchi">
+            <span>TAKUMI</span>
+            <span class="name-second">SAKAGUCHI</span>
+          </h1>
 
-          <div class="metrics">
-            <div class="metric">
-              <span class="num">2025</span>
-              <span class="label">Major Year</span>
-              <p>AKATUKI、ロボコン全国、NEDO NEPなど、成果が集中した年。</p>
-            </div>
-            <div class="metric">
-              <span class="num">99%</span>
-              <span class="label">Hardware Control</span>
-              <p>制御・統合・現場最適化を最も強い主戦場に設定。</p>
-            </div>
-            <div class="metric">
-              <span class="num">Lead</span>
-              <span class="label">Role</span>
-              <p>実装だけではなく、方針決定と推進にも強み。</p>
-            </div>
-          </div>
+          <div class="hero-split-rule" aria-hidden="true"></div>
 
-          <div class="hero-actions">
+          <div class="hero-split-ja">坂口 拓海</div>
+          <p class="hero-split-role">Hardware / Embedded / Robotics</p>
+
+          <div class="hero-split-actions">
             <a class="solid-btn" href="#highlights">
               <span>実績を見る</span>
               <span class="arrow" aria-hidden="true"></span>
@@ -1234,52 +1395,10 @@
               <span class="arrow" aria-hidden="true"></span>
             </a>
           </div>
-        </article>
 
-        <div class="hero-side">
-          <article class="glass portrait-card reveal">
-            <div class="portrait-head">
-              <div>
-                <div class="caption">Visual Identity</div>
-                <h2 style="margin:8px 0 0; font-size:26px; letter-spacing:-.04em;">Build with command, ship with precision.</h2>
-              </div>
-              <div class="section-chip">Profile</div>
-            </div>
-
-            <div class="portrait-frame">
-              <img src="neya.png" alt="坂口拓海のポートレート" loading="eager" decoding="async" onerror="this.style.display='none'; this.parentElement.style.background='radial-gradient(circle at 30% 20%, rgba(255,255,255,.12), transparent 30%), linear-gradient(135deg, rgba(222,195,135,.22), rgba(115,223,255,.18), rgba(138,123,255,.18))';">
-              <div class="portrait-overlay"></div>
-              <div class="portrait-badges">
-                <div class="badge"><i aria-hidden="true"></i> Hardware Control</div>
-                <div class="badge"><i aria-hidden="true"></i> Embedded Systems</div>
-                <div class="badge"><i aria-hidden="true"></i> Robotics Lead</div>
-              </div>
-            </div>
-          </article>
-
-          <article class="glass status-card reveal">
-            <div class="card-top">
-              <div>
-                <h3>Current Signature</h3>
-              </div>
-              <div class="section-chip">Core</div>
-            </div>
-            <div class="status-list">
-              <div class="status-item">
-                <span>Positioning</span>
-                <strong>Hardware / Embedded / Robotics</strong>
-              </div>
-              <div class="status-item">
-                <span>Strength</span>
-                <strong>作ることと、作らせることの両立</strong>
-              </div>
-              <div class="status-item">
-                <span>Approach</span>
-                <strong>短サイクル検証 / 現場最適 / 壊れにくい設計</strong>
-              </div>
-            </div>
-          </article>
+          <div class="hero-split-tag" aria-hidden="true">ポートフォリオ / Portfolio 2025</div>
         </div>
+
       </div>
     </section>
 
