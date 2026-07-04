@@ -1,95 +1,78 @@
 (() => {
-  const doc = document.documentElement;
-  const progressBar = document.getElementById("progressBar");
-  const sections = [...document.querySelectorAll("main section[id]")];
-  const navLinks = [...document.querySelectorAll('.nav-links a[href^="#"]')];
-  const revealEls = [...document.querySelectorAll('.reveal')];
-  const yearEl = document.getElementById('year');
-  const cards = [...document.querySelectorAll('.card')];
-  yearEl.textContent = new Date().getFullYear();
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  function updateProgress(){
-    const scrollTop = window.scrollY || doc.scrollTop;
-    const max = Math.max(1, doc.scrollHeight - window.innerHeight);
-    const p = (scrollTop / max) * 100;
-    progressBar.style.width = p.toFixed(2) + '%';
-    doc.style.setProperty('--scroll', (scrollTop * 0.04).toFixed(2));
+  const intro = document.getElementById('intro');
+  if (intro) {
+    document.body.classList.add('intro-lock');
+    const dismissIntro = () => {
+      intro.classList.add('intro-hide');
+      document.body.classList.remove('intro-lock');
+    };
+    intro.addEventListener('click', dismissIntro);
+    intro.addEventListener('transitionend', () => { intro.style.display = 'none'; }, { once: true });
+    setTimeout(dismissIntro, reduce ? 400 : 1800);
   }
 
-  function setCursorGlow(x, y){
-    doc.style.setProperty('--mx', x + 'px');
-    doc.style.setProperty('--my', y + 'px');
+  document.querySelectorAll('[data-year]').forEach((e) => {
+    e.textContent = new Date().getFullYear();
+  });
+
+  const bar = document.querySelector('[data-progress]');
+  if (bar) {
+    const onScroll = () => {
+      const max = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+      bar.style.width = ((window.scrollY / max) * 100).toFixed(2) + '%';
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
   }
 
-  window.addEventListener('mousemove', (e) => setCursorGlow(e.clientX, e.clientY), { passive:true });
-  setCursorGlow(window.innerWidth * .65, window.innerHeight * .3);
+  // dot-matrix wave field behind the hero
+  const cv = document.querySelector('[data-dots]');
+  if (cv && !reduce) {
+    const ctx = cv.getContext('2d');
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    let W = 0, H = 0;
+    const resize = () => {
+      const r = cv.getBoundingClientRect();
+      W = r.width; H = r.height;
+      cv.width = W * dpr; cv.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    resize();
+    window.addEventListener('resize', resize);
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) entry.target.classList.add('show');
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
-  revealEls.forEach((el) => observer.observe(el));
+    const gap = 26;
+    let t = 0;
+    const draw = () => {
+      t += .02;
+      ctx.clearRect(0, 0, W, H);
+      for (let y = gap; y < H; y += gap) {
+        for (let x = gap; x < W; x += gap) {
+          const v = Math.sin(x * 0.012 + t) * Math.cos(y * 0.011 - t * 0.7) * Math.sin((x + y) * 0.004 + t * 0.5);
+          const a = Math.max(0, v) * 0.16;
+          if (a < 0.01) continue;
+          const r = 1 + Math.max(0, v) * 1.6;
+          ctx.beginPath();
+          ctx.arc(x, y, r, 0, Math.PI * 2);
+          ctx.fillStyle = v > 0.82 ? `rgba(232,57,29,${(a + 0.1).toFixed(3)})` : `rgba(13,13,12,${a.toFixed(3)})`;
+          ctx.fill();
+        }
+      }
+      requestAnimationFrame(draw);
+    };
+    requestAnimationFrame(draw);
+  }
 
-  const navObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const id = '#' + entry.target.id;
-      navLinks.forEach((a) => a.classList.toggle('active', a.getAttribute('href') === id));
-    });
-  }, { threshold: 0.46 });
-  sections.forEach((section) => navObserver.observe(section));
-
-  const bars = [...document.querySelectorAll('.skill-bar')];
-  const barObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (!entry.isIntersecting) return;
-      const bar = entry.target;
-      const fill = bar.querySelector('.fill');
-      const target = Number(bar.dataset.fill || 0);
-      requestAnimationFrame(() => { fill.style.width = target + '%'; });
-      barObserver.unobserve(bar);
-    });
-  }, { threshold: .25 });
-  bars.forEach((bar) => barObserver.observe(bar));
-
-  const smoothLinks = [...document.querySelectorAll('a[href^="#"]')];
-  smoothLinks.forEach((link) => {
-    link.addEventListener('click', (e) => {
-      const id = link.getAttribute('href');
-      if (!id || id === '#') return;
-      const target = document.querySelector(id);
-      if (!target) return;
-      e.preventDefault();
-      const y = target.getBoundingClientRect().top + window.scrollY - 92;
-      window.scrollTo({ top: y, behavior: prefersReduced ? 'auto' : 'smooth' });
-    });
-  });
-
-  cards.forEach((card) => card.classList.add('modern-parallax'));
-
-  const tiltNodes = [...document.querySelectorAll('[data-tilt]')];
-  tiltNodes.forEach((node) => {
-    if (window.matchMedia('(pointer: coarse)').matches || prefersReduced) return;
-    let raf = 0;
-    node.addEventListener('mousemove', (e) => {
-      const rect = node.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width;
-      const py = (e.clientY - rect.top) / rect.height;
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const rx = (py - .5) * -8;
-        const ry = (px - .5) * 10;
-        node.style.transform = `perspective(1200px) rotateX(${rx}deg) rotateY(${ry}deg)`;
-      });
-    });
-    node.addEventListener('mouseleave', () => {
-      node.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg)';
-    });
-  });
-
-  window.addEventListener('scroll', updateProgress, { passive:true });
-  updateProgress();
+  // kinetic hero: subtle position/opacity shift on scroll
+  const kin = document.querySelector('[data-kinetic]');
+  if (kin && !reduce) {
+    const onKinetic = () => {
+      const p = Math.min(1, window.scrollY / (window.innerHeight * 0.9));
+      kin.style.transform = `translateX(${(-p * 30).toFixed(1)}px)`;
+      kin.style.opacity = String(1 - p * 0.35);
+    };
+    window.addEventListener('scroll', onKinetic, { passive: true });
+    onKinetic();
+  }
 })();

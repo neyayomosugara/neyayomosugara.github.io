@@ -1,39 +1,47 @@
-:root{
-  --accent-grad: linear-gradient(120deg, rgba(222,195,135,.98), rgba(255,255,255,.90), rgba(115,223,255,.92));
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{ margin:0; background:#f4f3ef; }
+
+@keyframes kMarquee{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@keyframes kReveal{ from{opacity:0; transform:translateY(30px)} to{opacity:1; transform:none} }
+@keyframes kBar{ from{transform:scaleX(0)} to{transform:scaleX(1)} }
+@keyframes kRise{ from{opacity:0; transform:translateY(60px)} to{opacity:1; transform:none} }
+@keyframes kPulse{ 0%,100%{transform:scale(1); opacity:1} 50%{transform:scale(1.5); opacity:.5} }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto }
+  *{ animation:none !important; transition:none !important }
 }
 
-header{
-  backdrop-filter: blur(28px) saturate(110%);
-  background: linear-gradient(180deg, rgba(2,2,5,.92), rgba(2,2,5,.50));
-}
+/* hover states (replaces inline style-hover from the old builder export) */
+.hv-invert:hover{ background:#0d0d0c; color:#f4f3ef; }
+.hv-accent:hover{ background:#e8391d; }
+.hv-invert2:hover{ background:#f4f3ef; color:#0d0d0c; }
+.hv-outline-accent:hover{ border-color:#e8391d; color:#e8391d; }
 
-.card{
-  position: relative;
-  isolation: isolate;
-}
+/* intro splash */
+body.intro-lock{ overflow:hidden; height:100vh; }
 
-.card::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  border-radius:inherit;
-  background: linear-gradient(140deg, rgba(255,255,255,.07), rgba(255,255,255,0) 40%);
-  opacity: .5;
-  pointer-events:none;
+#intro{
+  position:fixed; inset:0; z-index:999; background:#0d0d0c;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:32px;
+  transition:opacity .6s ease, visibility .6s ease;
 }
+#intro.intro-hide{ opacity:0; visibility:hidden; pointer-events:none; }
 
-.section-title{
-  background: var(--accent-grad);
-  -webkit-background-clip:text;
-  background-clip:text;
-  color: transparent;
-}
+#intro-geo rect, #intro-geo circle{ transform-origin:100px 100px; }
+#intro-geo rect:first-child{ animation:introSpin 5s linear infinite; }
+#intro-geo rect:nth-child(2){ animation:introSpin 3.4s linear infinite reverse; }
+#intro-geo circle{ animation:introPulse 1.8s ease-in-out infinite; }
 
-/* Contact section: full-width single card */
-#contact .card {
-  max-width: 760px;
-}
+@keyframes introSpin{ from{transform:rotate(0)} to{transform:rotate(360deg)} }
+@keyframes introPulse{ 0%,100%{ transform:scale(1); opacity:1 } 50%{ transform:scale(1.12); opacity:.6 } }
 
-.modern-parallax{
-  transform: translateY(calc(var(--scroll, 0) * -1px));
+#intro-name{
+  display:flex; flex-direction:column; align-items:center; gap:2px;
+  font-family:'Archivo','Noto Sans JP',system-ui,sans-serif; font-weight:900;
+  letter-spacing:.08em; text-transform:uppercase; color:#f4f3ef;
+  font-size:clamp(20px,4vw,34px); line-height:1.15;
+  opacity:1; animation:introFadeUp .8s ease .15s both;
 }
+@keyframes introFadeUp{ from{opacity:0; transform:translateY(14px)} to{opacity:1; transform:none} }
